@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-  .tasksList > li:first-of-type button:last-of-type {
+  .tasksList > li:first-of-type article {
     @apply bg-violet-600 text-slate-100;
   }
-  .tasksList > li:first-of-type button:last-of-type .description {
+  .tasksList > li:first-of-type article .description {
     @apply text-violet-300;
   }
-  .tasksList > li:first-of-type button:last-of-type > div {
+  .tasksList > li:first-of-type article > div {
     @apply border-violet-500;
   }
 }
