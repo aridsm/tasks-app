@@ -12,4 +12,13 @@
   .tasksList > li:first-of-type article > div {
     @apply border-violet-500;
   }
+  .children-styles {
+    @apply text-slate-400;
+  }
+  .children-styles button {
+    @apply p-1;
+  }
+  .children-styles svg {
+    @apply w-6 h-6;
+  }
 }

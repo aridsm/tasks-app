@@ -28,11 +28,12 @@ const links = [
 const classLinkActive =
   "text-rose-600 bg-violet-100 border-r-4 border-rose-400";
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const route = useLocation();
   const currentPath = route.pathname;
+
   return (
-    <header className="bg-slate-100 flex flex-col">
+    <header className="bg-slate-100 flex flex-col col-span-2 h-screen ">
       <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide">
         To-do list
       </h1>

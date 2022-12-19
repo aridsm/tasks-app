@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const Tooltip = ({ txt, children, className }) => {
+type Props = {
+  txt: string;
+  children: React.ReactNode;
+  className?: string;
+};
+
+const Tooltip: React.FC<Props> = ({ txt, children, className }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
   return (

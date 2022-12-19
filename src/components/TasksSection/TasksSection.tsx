@@ -3,9 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Routes/Home";
 import HeaderTasks from "./HeaderTasks";
 
-const TasksSection = () => {
+const TasksSection: React.FC = () => {
   return (
-    <main className="col-span-5 p-5">
+    <main className="col-span-7 pt-5 pb-16 px-8">
       <HeaderTasks />
       <Routes>
         <Route path="/" element={<Home />} />
