@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { ReactComponent as IconView1 } from "../../assets/view-1.svg";
 import { ReactComponent as IconView2 } from "../../assets/view-2.svg";
 
 const ButtonsSort: React.FC<{
   isListInView1: boolean;
+  sortedBy: string;
+  setSortedBy: (option: string) => void;
   setIsListInView1: (status: boolean) => void;
-}> = ({ isListInView1, setIsListInView1 }) => {
-  const [sortedBy, setSortedBy] = useState("");
-
+}> = ({ isListInView1, setIsListInView1, sortedBy, setSortedBy }) => {
   return (
     <div className="flex children-styles">
       <button onClick={() => setIsListInView1(true)}>

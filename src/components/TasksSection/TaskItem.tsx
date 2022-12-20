@@ -21,6 +21,13 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
     dispatch(tasksActions.removeTask(id));
   };
 
+  const fullDate: Date = new Date(task.date);
+  const month: number = fullDate.getMonth();
+  const day: number = fullDate.getDate();
+  const year: number = fullDate.getFullYear();
+
+  const dateFormated: string = month + "/" + day + "/" + year;
+
   return (
     <li key={task.id}>
       <button className="bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition hover:bg-rose-300">
@@ -39,7 +46,7 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
           </span>
           <p className="description text-slate-400">{task.description}</p>
           <time className="mt-auto flex w-full">
-            <Calendar className="mr-2 w-5" /> {task.date}
+            <Calendar className="mr-2 w-5" /> {dateFormated}
           </time>
         </div>
         <div
