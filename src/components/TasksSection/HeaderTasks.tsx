@@ -16,7 +16,7 @@ const HeaderTasks: React.FC = () => {
           type="search"
           id="search"
           placeholder="Search task"
-          className="bg-slate-100 rounded-lg p-3 w-full outline-transparent hover:outline-violet-600 focus:outline-violet-600 transition"
+          className="inputStyles w-full"
         />
         <Search className="absolute w-5 right-4 top-3.5 text-slate-400" />
       </form>

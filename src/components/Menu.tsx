@@ -33,7 +33,7 @@ const Menu: React.FC = () => {
   const currentPath = route.pathname;
 
   return (
-    <header className="bg-slate-100 flex flex-col col-span-2 h-screen ">
+    <header className="bg-slate-100 flex flex-col h-screen w-2/12 fixed left-0">
       <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide">
         To-do list
       </h1>

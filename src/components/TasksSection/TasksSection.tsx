@@ -5,7 +5,7 @@ import HeaderTasks from "./HeaderTasks";
 
 const TasksSection: React.FC = () => {
   return (
-    <main className="col-span-7 pt-5 pb-16 px-8">
+    <main className=" pt-5 pb-16 px-8 w-8/12 m-auto">
       <HeaderTasks />
       <Routes>
         <Route path="/" element={<Home />} />
