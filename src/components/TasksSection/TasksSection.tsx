@@ -16,11 +16,11 @@ const TasksSection: React.FC = () => {
         <Route path="/important" element={<ImportantTasks />} />
         <Route
           path="/done"
-          element={<DoneTasks done={true} title="Tasks completed" />}
+          element={<DoneTasks done={true} title="Completed tasks" />}
         />
         <Route
           path="/upcoming"
-          element={<DoneTasks done={false} title="Tasks uncompleted" />}
+          element={<DoneTasks done={false} title="Uncompleted tasks" />}
         />
       </Routes>
     </main>
