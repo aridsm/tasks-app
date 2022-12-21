@@ -7,7 +7,7 @@ import TaskItem from "../TasksSection/TaskItem";
 
 type Props = {
   title: string;
-  tasks: Task[];
+  tasks: Task[] | [];
 };
 
 const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
@@ -15,7 +15,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
 
   const [sortedBy, setSortedBy] = useState<string>("");
 
-  const [sortedTasks, setSortedTasks] = useState<Task[]>(tasks);
+  const [sortedTasks, setSortedTasks] = useState<Task[] | []>(tasks);
 
   const dispatch = useAppDispatch();
 
@@ -106,7 +106,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
         <li>
           <button
             onClick={openModalHandler}
-            className={`border-2 border-slate-300 text-slate-400 w-full rounded-lg border-dashed transition hover:bg-slate-300 ${
+            className={`border-2 border-slate-300 text-slate-400 w-full rounded-lg border-dashed transition hover:bg-slate-300 hover:text-slate-500 ${
               isListInView1 ? "h-32" : "h-64"
             }`}
           >

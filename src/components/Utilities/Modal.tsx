@@ -8,14 +8,6 @@ import { tasksActions } from "../../store/Tasks.store";
 const ModalContent: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const titleInputRef = useRef<HTMLInputElement>(null);
-  const descriptionTextRef = useRef<HTMLTextAreaElement>(null);
-  const dateInputRef = useRef<HTMLInputElement>(null);
-  const isTitleValid = useRef<Boolean>(false);
-  const isDateValid = useRef<Boolean>(false);
-
-  const [isImportant, setIsImportant] = useState<boolean>(false);
-
   const today: Date = new Date();
   let day: number = today.getDate();
   let month: number = today.getMonth() + 1;
@@ -30,18 +22,26 @@ const ModalContent: React.FC = () => {
   const todayDate: string = year + "-" + month + "-" + day;
   const maxDate: string = year + 1 + "-" + month + "-" + day;
 
+  const titleInputRef = useRef<HTMLInputElement>(null);
+  const descriptionTextRef = useRef<HTMLTextAreaElement>(null);
+  const [date, setDate] = useState<string>(todayDate);
+  const isTitleValid = useRef<Boolean>(false);
+  const isDateValid = useRef<Boolean>(false);
+
+  const [isImportant, setIsImportant] = useState<boolean>(false);
+
   const addNewTaskHandler = (event: React.FormEvent): void => {
     event.preventDefault();
 
     isTitleValid.current = titleInputRef.current!.value.trim().length > 0;
-    isDateValid.current = dateInputRef.current!.value.trim().length > 0;
+    isDateValid.current = date.trim().length > 0;
 
     if (isTitleValid.current && isDateValid.current) {
       const newTask: Task = {
         title: titleInputRef.current!.value,
         dir: "Home",
         description: descriptionTextRef.current!.value,
-        date: dateInputRef.current!.value,
+        date: date,
         completed: false,
         important: isImportant,
         id: Date.now().toString(),
@@ -88,7 +88,8 @@ const ModalContent: React.FC = () => {
               <input
                 type="date"
                 className="w-full"
-                ref={dateInputRef}
+                value={date}
+                onChange={({ target }) => setDate(target.value)}
                 min={todayDate}
                 max={maxDate}
               />

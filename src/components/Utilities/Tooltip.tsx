@@ -19,7 +19,7 @@ const Tooltip: React.FC<Props> = ({ txt, children, className }) => {
         {children}
       </span>
       <div
-        className={`absolute bg-slate-200 rounded-md w-max py-1 px-2 top-full text-slate-600 shadow-md ${
+        className={`absolute bg-slate-600 rounded-md w-max py-1 px-2 top-full text-slate-200 z-10 ${
           tooltipVisible ? "visible" : "invisible"
         }`}
       >

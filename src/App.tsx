@@ -1,5 +1,6 @@
 import React from "react";
 import AccountData from "./components/AccountData";
+import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import TasksSection from "./components/TasksSection/TasksSection";
 import Modal from "./components/Utilities/Modal";
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       {isModalOpen && <Modal />}
       <Menu />
       <TasksSection />
+      <Footer />
       <AccountData />
     </div>
   );
