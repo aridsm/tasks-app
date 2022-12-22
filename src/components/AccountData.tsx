@@ -49,7 +49,7 @@ const AccountData: React.FC = () => {
           </div>
         </div>
       )}
-      <div className="mt-4">
+      <div className="mt-6">
         <span className="flex justify-between mb-2">
           <span>All tasks </span> {allTasksDone.length}/{tasks.length}
         </span>
@@ -58,7 +58,11 @@ const AccountData: React.FC = () => {
         </div>
       </div>
 
-      {todaysTasks.length === 0 && <span>No tasks today</span>}
+      {todaysTasks.length === 0 && (
+        <span className="mt-6 block pt-4 border-t-slate-800 border-t-2">
+          No tasks today
+        </span>
+      )}
       <a
         href="/"
         className="mt-auto bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-800 dark:text-slate-200"

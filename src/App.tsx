@@ -1,7 +1,7 @@
 import React from "react";
 import AccountData from "./components/AccountData";
 import Footer from "./components/Footer";
-import Menu from "./components/Menu";
+import Menu from "./components/Menu/Menu";
 import TasksSection from "./components/TasksSection/TasksSection";
 import Modal from "./components/Utilities/Modal";
 import { useAppSelector } from "./store/hooks";

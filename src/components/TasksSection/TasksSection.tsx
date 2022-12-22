@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Directory from "../Routes/Directory";
 import DoneTasks from "../Routes/DoneTasks";
 import Home from "../Routes/Home";
 import ImportantTasks from "../Routes/ImportantTasks";
@@ -22,6 +23,7 @@ const TasksSection: React.FC = () => {
           path="/upcoming"
           element={<DoneTasks done={false} title="Uncompleted tasks" />}
         />
+        <Route path="/:dir" element={<Directory />} />
       </Routes>
     </main>
   );

@@ -23,6 +23,10 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
     dispatch(modalActions.openModalHandler());
   };
 
+  const tasksTitle = `${title} (${tasks.length} ${
+    tasks.length === 1 ? "task" : "tasks"
+  })`;
+
   useEffect(() => {
     const sortByDate = (order: "max-date" | "min-date"): Task[] => {
       const toMillisseconds = (date: string) => Date.parse(date);
@@ -87,7 +91,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
   return (
     <section>
       <h1 className="font-medium my-8 text-2xl dark:text-slate-200">
-        {title} ({tasks.length} tasks)
+        {tasksTitle}
       </h1>
       <ButtonsSort
         isListInView1={isListInView1}
