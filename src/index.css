@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .inputStyles {
-  @apply bg-slate-100 rounded-lg p-3 outline-transparent hover:outline-violet-600 focus:outline-violet-600 transition;
+  @apply bg-slate-100 rounded-lg p-3 outline-transparent hover:outline-violet-600 focus:outline-violet-600 transition dark:bg-slate-800/[.5];
 }
 
 .btn {
-  @apply bg-violet-600 hover:bg-violet-700 py-3 px-6 text-slate-50 rounded-lg w-auto transition;
+  @apply bg-violet-600 hover:bg-violet-700 py-3 px-6 text-slate-50 rounded-lg w-auto transition dark:bg-violet-800;
 }
 
 .btn:active {
@@ -16,13 +16,13 @@
 
 @layer components {
   .tasksList > li:first-of-type article {
-    @apply bg-violet-600 text-slate-100;
+    @apply bg-violet-600 text-slate-100 dark:bg-violet-800;
   }
   .tasksList > li:first-of-type article .description {
     @apply text-violet-300;
   }
   .tasksList > li:first-of-type article > div {
-    @apply border-violet-500;
+    @apply border-violet-500 dark:border-violet-700;
   }
   .listView1 article {
     @apply h-40;

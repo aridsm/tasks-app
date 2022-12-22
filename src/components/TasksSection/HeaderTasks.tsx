@@ -48,7 +48,7 @@ const HeaderTasks: React.FC = () => {
             className={`relative ${classHasNotification}`}
             title="notifications"
           >
-            <IconBell className="fill-violet-600 w-6 h-6" />
+            <IconBell className="fill-violet-600 w-6 h-6 dark:fill-violet-800" />
           </button>
         </Tooltip>
 

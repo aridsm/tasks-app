@@ -35,11 +35,11 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
 
   return (
     <li key={task.id}>
-      <button className="bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition hover:bg-rose-300">
+      <button className=" bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition dark:bg-rose-300/[.1] dark:text-rose-300">
         {task.dir}
       </button>
       <article
-        className={`bg-slate-100 rounded-lg p-4 flex text-left transition hover:shadow-lg hover:shadow-slate-300 ${
+        className={`bg-slate-100 rounded-lg p-4 flex text-left transition hover:shadow-lg hover:shadow-slate-300 dark:bg-slate-800/[.5] dark:hover:shadow-transparent ${
           isListInView1 ? "flex-row h-32" : "flex-col h-64"
         }`}
       >
@@ -55,16 +55,16 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
           </time>
         </div>
         <div
-          className={`flex border-slate-200 ${
+          className={`flex border-slate-200 dark:border-slate-700 ${
             isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"
           }`}
         >
           <span
             className={`${
               task.completed
-                ? "bg-green-200 text-green-600"
-                : "bg-yellow-100 text-yellow-600"
-            } py-1 px-3 rounded-full font-medium mr-4`}
+                ? "bg-green-200 text-green-600 dark:bg-green-300/[.1] dark:text-green-300"
+                : "bg-yellow-100 text-yellow-600 dark:bg-yellow-200/[.1] dark:text-yellow-100"
+            } py-1 px-3 rounded-full font-medium  mr-4`}
           >
             {task.completed ? "completed" : "not completed"}
           </span>

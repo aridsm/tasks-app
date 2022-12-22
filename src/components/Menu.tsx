@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAppDispatch } from "../store/hooks";
+import { tasksActions } from "../store/Tasks.store";
 import BtnAddTask from "./Utilities/BtnAddTask";
 
 const links = [
@@ -26,14 +28,18 @@ const links = [
 ];
 
 const classLinkActive =
-  "text-rose-600 bg-violet-100 border-r-4 border-rose-400";
+  "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-700 dark:text-rose-300 dark:border-rose-300";
 
 const Menu: React.FC = () => {
   const route = useLocation();
   const currentPath = route.pathname;
+  const dispatch = useAppDispatch();
 
+  const deleteAllTasksHandler = () => {
+    dispatch(tasksActions.deleteAllTasks());
+  };
   return (
-    <header className="bg-slate-100 flex flex-col h-screen w-2/12 fixed left-0">
+    <header className="bg-slate-100 flex flex-col h-screen w-2/12 fixed left-0 dark:bg-slate-800/[.5]">
       <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide">
         To-do list
       </h1>
@@ -44,7 +50,7 @@ const Menu: React.FC = () => {
             <li key={link.path}>
               <NavLink
                 to={link.path}
-                className={`px-4 py-2 w-full block transition hover:text-rose-600 ${
+                className={`px-4 py-2 w-full block transition hover:text-rose-600 dark:hover:text-rose-300 ${
                   currentPath === link.path ? classLinkActive : ""
                 }`}
               >
@@ -54,8 +60,13 @@ const Menu: React.FC = () => {
           ))}
         </ul>
       </nav>
-      <button className="mt-auto text-left">Darkmode</button>
-      <button className="mt-4 text-left">Delete all tasks</button>
+
+      <button
+        className="mx-4 mt-auto mb-8 text-left"
+        onClick={deleteAllTasksHandler}
+      >
+        Delete all tasks
+      </button>
     </header>
   );
 };
