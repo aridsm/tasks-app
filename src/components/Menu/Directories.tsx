@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Arrow } from "../../assets/arrow.svg";
 import { useAppSelector } from "../../store/hooks";
@@ -8,13 +8,12 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
   const currentPath = route.pathname;
 
   const [isDirectoriesOpen, setIsDirectoriesOpen] = useState<boolean>(true);
+  const [creatingADir, setCreatingADir] = useState<boolean>(false);
   const directories = useAppSelector((store) => store.tasks.directories);
 
   const toggleDirectoriesOpen = () => {
     setIsDirectoriesOpen((prevState) => !prevState);
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="py-4">
@@ -33,6 +32,20 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
       </button>
       {isDirectoriesOpen && (
         <div>
+          {creatingADir && (
+            <div className="ml-9 mr-4 my-2">
+              <label htmlFor="dir-name" className="sr-only">
+                Enter a directory name
+              </label>
+              <input
+                type="text"
+                className="inputStyles w-full"
+                id="dir-name"
+                autoFocus
+              />
+            </div>
+          )}
+
           <ul>
             {directories.map((dir: string) => (
               <li key={dir}>
@@ -47,7 +60,10 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
               </li>
             ))}
           </ul>
-          <button className="px-3 py-1 border-slate-300 dark:border-slate-700 border-2 ml-9 mt-2 rounded-md border-dashed hover:text-violet-500">
+          <button
+            className="px-3 py-1 border-slate-300 dark:border-slate-700 border-2 ml-9 mt-2 rounded-md border-dashed hover:text-violet-500"
+            onClick={() => setCreatingADir(true)}
+          >
             + New
           </button>
         </div>

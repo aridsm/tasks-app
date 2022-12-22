@@ -6,6 +6,7 @@ import Tooltip from "../Utilities/Tooltip";
 import { tasksActions } from "../../store/Tasks.store";
 import { useAppDispatch } from "../../store/hooks";
 import { Task } from "../../interfaces";
+import { Link } from "react-router-dom";
 
 const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
   isListInView1,
@@ -35,9 +36,12 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
 
   return (
     <li key={task.id}>
-      <button className=" bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition dark:bg-slate-700 dark:text-slate-200">
+      <Link
+        to={`/${task.dir}`}
+        className=" bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 transition dark:bg-slate-700 dark:text-slate-200 block w-min hover:pb-2 hover:-mt-2"
+      >
         {task.dir}
-      </button>
+      </Link>
       <article
         className={`bg-slate-100 rounded-lg p-4 flex text-left transition hover:shadow-lg hover:shadow-slate-300 dark:bg-slate-800/[.5] dark:hover:shadow-transparent ${
           isListInView1 ? "flex-row h-32" : "flex-col h-64"

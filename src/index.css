@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .inputStyles {
-  @apply bg-slate-100 rounded-lg p-3 outline-transparent hover:outline-violet-600 focus:outline-violet-600 transition dark:bg-slate-800/[.5];
+  @apply bg-slate-100 rounded-lg p-3 outline-transparent border-2 border-transparent hover:border-violet-600 focus:border-violet-600 focus:outline-none transition dark:bg-slate-800/[.5];
 }
 
 .btn {

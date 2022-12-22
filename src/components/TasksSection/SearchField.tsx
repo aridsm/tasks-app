@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Search } from "../../assets/search.svg";
 import { Task } from "../../interfaces";
 import { useAppSelector } from "../../store/hooks";
+import useVisibility from "../hooks/useVisibility";
 
 const SearchField: React.FC = () => {
   const tasks: Task[] = useAppSelector((state) => state.tasks.tasks);
@@ -10,6 +11,12 @@ const SearchField: React.FC = () => {
   const searchResultsRef = useRef<HTMLInputElement>(null);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const [matchedTasks, setMatchedTasks] = useState<Task[]>([]);
+
+  const {
+    elementIsVisible: listResultsVisible,
+    showElement: showListResults,
+    closeElement: closeListResults,
+  } = useVisibility(searchResultsRef.current!, () => setSearchInputValue(""));
 
   useEffect(() => {
     const filteredTasks = tasks.filter((task: Task) => {
@@ -23,21 +30,12 @@ const SearchField: React.FC = () => {
   }, [searchInputValue, tasks]);
 
   useEffect(() => {
-    const checkClick = (e: any) => {
-      if (!searchResultsRef.current) return;
-      if (
-        e.target !== searchResultsRef.current &&
-        !searchResultsRef.current!.contains(e.target)
-      ) {
-        setSearchInputValue("");
-      }
-    };
-
-    document.addEventListener("click", checkClick);
-    return () => {
-      document.removeEventListener("click", checkClick);
-    };
-  }, []);
+    if (searchInputValue.trim().length > 0) {
+      showListResults();
+    } else {
+      closeListResults();
+    }
+  }, [closeListResults, searchInputValue, showListResults]);
 
   return (
     <form className="flex-1 relative">
@@ -52,7 +50,7 @@ const SearchField: React.FC = () => {
         className="inputStyles w-full"
       />
       <Search className="absolute w-5 right-4 top-3.5 text-slate-400" />
-      {matchedTasks.length > 0 && (
+      {listResultsVisible && (
         <ul className="absolute bg-slate-100 rounded-md w-full top-14 p-3 divide-y-2 divide-slate-200 dark:bg-slate-800 dark:divide-slate-700">
           {matchedTasks.map((task) => (
             <li key={task.id} className="py-2">
