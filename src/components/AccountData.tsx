@@ -1,11 +1,15 @@
 import React from "react";
 import avatar1 from "../assets/avatar-1.jpg";
+import { useAppSelector } from "../store/hooks";
+import useCompletedTasks from "./hooks/useCompletedTasks";
 import useTodayTasks from "./hooks/useTodayTasks";
 
 const AccountData: React.FC = () => {
   const todaysTasks = useTodayTasks();
+  const tasks = useAppSelector((state) => state.tasks.tasks);
 
-  const totalTodaysTasks = todaysTasks.length;
+  const todayTasksDone = useCompletedTasks({ tasks: todaysTasks, done: true });
+  const allTasksDone = useCompletedTasks({ tasks: tasks, done: true });
 
   const toggleDarkMode = () => {
     const html = document.querySelector<HTMLHtmlElement>("html")!;
@@ -23,21 +27,35 @@ const AccountData: React.FC = () => {
         className="mt-8 text-left flex items-center justify-between"
         onClick={toggleDarkMode}
       >
-        <span>Darkmode</span>
-        <div className="w-10 h-5 bg-slate-200 rounded-full flex items-center px-0.5 dark:bg-slate-700">
-          <div className="w-4 h-4 rounded-full bg-violet-500 "></div>
+        <span className="dark:text-slate-200">Darkmode</span>
+        <div className="w-10 h-5 bg-slate-200 rounded-full px-0.5 dark:bg-slate-700 relative flex items-center dark:justify-end">
+          <div className="w-4 h-4 rounded-full bg-violet-500 absolute"></div>
         </div>
       </button>
 
+      {todaysTasks.length !== 0 && (
+        <div>
+          <span>
+            Tasks today {todayTasksDone.length}/{todaysTasks.length}
+          </span>
+          <div className="bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700">
+            <div className="bg-violet-500 h-full w-4"></div>
+          </div>
+        </div>
+      )}
       <div>
-        <span>Tasks today {totalTodaysTasks}</span>
+        <span>
+          All tasks {allTasksDone.length}/{tasks.length}
+        </span>
         <div className="bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700">
           <div className="bg-violet-500 h-full w-4"></div>
         </div>
       </div>
+
+      {todaysTasks.length === 0 && <span>No tasks today</span>}
       <a
         href="/"
-        className="mt-auto bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-rose-300/[.1] dark:text-rose-300"
+        className="mt-auto bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-800 dark:text-slate-200"
       >
         Projected by Ariane Morelato
       </a>

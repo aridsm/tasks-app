@@ -7,7 +7,7 @@
 }
 
 .btn {
-  @apply bg-violet-600 hover:bg-violet-700 py-3 px-6 text-slate-50 rounded-lg w-auto transition dark:bg-violet-800;
+  @apply bg-violet-600 hover:bg-violet-700 py-3 px-6 text-slate-50 rounded-lg w-auto transition dark:bg-violet-900;
 }
 
 .btn:active {
@@ -16,13 +16,13 @@
 
 @layer components {
   .tasksList > li:first-of-type article {
-    @apply bg-violet-600 text-slate-100 dark:bg-violet-800;
+    @apply bg-violet-600 text-slate-100 dark:bg-violet-900;
   }
   .tasksList > li:first-of-type article .description {
     @apply text-violet-300;
   }
   .tasksList > li:first-of-type article > div {
-    @apply border-violet-500 dark:border-violet-700;
+    @apply border-violet-500 dark:border-violet-800;
   }
   .listView1 article {
     @apply h-40;

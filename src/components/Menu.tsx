@@ -28,7 +28,7 @@ const links = [
 ];
 
 const classLinkActive =
-  "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-700 dark:text-rose-300 dark:border-rose-300";
+  "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-200";
 
 const Menu: React.FC = () => {
   const route = useLocation();
@@ -50,7 +50,7 @@ const Menu: React.FC = () => {
             <li key={link.path}>
               <NavLink
                 to={link.path}
-                className={`px-4 py-2 w-full block transition hover:text-rose-600 dark:hover:text-rose-300 ${
+                className={`px-4 py-2 w-full block transition hover:text-rose-600 dark:hover:text-slate-200 ${
                   currentPath === link.path ? classLinkActive : ""
                 }`}
               >
