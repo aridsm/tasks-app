@@ -35,7 +35,7 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
 
   return (
     <li key={task.id}>
-      <button className="font-medium bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition">
+      <button className=" bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md ml-auto mr-4 block transition dark:bg-slate-700 dark:text-slate-200">
         {task.dir}
       </button>
       <article
@@ -82,7 +82,9 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
             >
               <StarLine
                 className={`w-6 h-6 ${
-                  task.important ? "fill-rose-500 stroke-rose-500" : "fill-none"
+                  task.important
+                    ? "fill-rose-500 stroke-rose-500 "
+                    : "fill-none"
                 }`}
               />
             </button>
