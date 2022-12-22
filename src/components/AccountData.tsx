@@ -16,6 +16,11 @@ const AccountData: React.FC = () => {
     html.classList.toggle("dark");
   };
 
+  const percentageTodayTasks =
+    (todayTasksDone.length * 100) / todaysTasks.length;
+
+  const percentageAllTasks = (allTasksDone.length * 100) / tasks.length;
+
   return (
     <section className="p-5 bg-slate-100 flex flex-col w-2/12 fixed top-0 right-0 h-screen dark:bg-slate-800/[.5]">
       <span className="flex items-center mx-auto">
@@ -34,21 +39,22 @@ const AccountData: React.FC = () => {
       </button>
 
       {todaysTasks.length !== 0 && (
-        <div>
-          <span>
-            Tasks today {todayTasksDone.length}/{todaysTasks.length}
+        <div className="mt-8">
+          <span className="flex justify-between mb-2">
+            <span>Tasks today</span> {todayTasksDone.length}/
+            {todaysTasks.length}
           </span>
-          <div className="bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700">
-            <div className="bg-violet-500 h-full w-4"></div>
+          <div className="barProgress">
+            <div style={{ width: percentageTodayTasks + "%" }}></div>
           </div>
         </div>
       )}
-      <div>
-        <span>
-          All tasks {allTasksDone.length}/{tasks.length}
+      <div className="mt-4">
+        <span className="flex justify-between mb-2">
+          <span>All tasks </span> {allTasksDone.length}/{tasks.length}
         </span>
-        <div className="bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700">
-          <div className="bg-violet-500 h-full w-4"></div>
+        <div className="barProgress">
+          <div style={{ width: percentageAllTasks + "%" }}></div>
         </div>
       </div>
 
