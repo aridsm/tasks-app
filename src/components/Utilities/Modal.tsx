@@ -110,7 +110,11 @@ const ModalContent: React.FC = () => {
                 onChange={({ target }) => setSelectedDirectory(target.value)}
               >
                 {directories.map((dir: string) => (
-                  <option key={dir} value={dir}>
+                  <option
+                    key={dir}
+                    value={dir}
+                    className="bg-slate-100 dark:bg-slate-800"
+                  >
                     {dir}
                   </option>
                 ))}
