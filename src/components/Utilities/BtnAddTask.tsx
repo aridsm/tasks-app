@@ -6,7 +6,7 @@ const BtnAddTask: React.FC<{ className?: string }> = ({ className }) => {
   const dispatch = useAppDispatch();
 
   const onOpenModal = () => {
-    dispatch(modalActions.openModalHandler());
+    dispatch(modalActions.openModalCreateTask());
   };
   return (
     <>

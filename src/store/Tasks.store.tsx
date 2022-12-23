@@ -89,6 +89,15 @@ const tasksSlice = createSlice({
       );
       newTaskFavorited!.important = !newTaskFavorited!.important;
     },
+    editTask(state, action: PayloadAction<Task>) {
+      const taskId = action.payload.id;
+
+      const newTaskEdited: Task = state.tasks.find(
+        (task: Task) => task.id === taskId
+      )!;
+      const indexTask = state.tasks.indexOf(newTaskEdited);
+      state.tasks[indexTask] = action.payload;
+    },
     deleteAllTasks(state) {
       state.tasks = [];
     },

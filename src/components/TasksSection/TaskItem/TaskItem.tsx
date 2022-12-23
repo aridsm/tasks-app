@@ -1,12 +1,12 @@
 import React from "react";
-import { ReactComponent as StarLine } from "../../assets/star-line.svg";
-import { ReactComponent as Trash } from "../../assets/trash.svg";
-import { ReactComponent as Calendar } from "../../assets/date.svg";
-import Tooltip from "../Utilities/Tooltip";
-import { tasksActions } from "../../store/Tasks.store";
-import { useAppDispatch } from "../../store/hooks";
-import { Task } from "../../interfaces";
+import { ReactComponent as StarLine } from "../../../assets/star-line.svg";
+import { ReactComponent as Trash } from "../../../assets/trash.svg";
+import Tooltip from "../../Utilities/Tooltip";
+import { tasksActions } from "../../../store/Tasks.store";
+import { useAppDispatch } from "../../../store/hooks";
+import { Task } from "../../../interfaces";
 import { Link } from "react-router-dom";
+import InfosTask from "./InfosTask";
 
 const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
   isListInView1,
@@ -22,18 +22,6 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
     dispatch(tasksActions.removeTask(id));
   };
 
-  const fullDate: Date = new Date(task.date.replaceAll("-", "/"));
-  const month: number = fullDate.getMonth() + 1;
-  const day: number = fullDate.getDate();
-  const year: number = fullDate.getFullYear();
-
-  const dateFormated: string =
-    month.toString().padStart(2, "0") +
-    "/" +
-    day.toString().padStart(2, "0") +
-    "/" +
-    year;
-
   return (
     <li key={task.id}>
       <Link
@@ -47,21 +35,7 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
           isListInView1 ? "flex-row h-32" : "flex-col h-64"
         }`}
       >
-        <div className="flex flex-col flex-1">
-          <span
-            className={`block font-medium dark:text-slate-200 ${
-              isListInView1 ? "mb-2" : "mb-4"
-            }`}
-          >
-            {task.title}
-          </span>
-          <p className="description text-slate-400 dark:text-slate-500">
-            {task.description}
-          </p>
-          <time className="mt-auto flex w-full">
-            <Calendar className="mr-2 w-5" /> {dateFormated}
-          </time>
-        </div>
+        <InfosTask task={task} isListInView1={isListInView1} />
         <div
           className={`flex border-slate-200 dark:border-slate-800 ${
             isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"

@@ -3,7 +3,7 @@ import { Task } from "../../interfaces";
 import { useAppDispatch } from "../../store/hooks";
 import { modalActions } from "../../store/Modal.store";
 import ButtonsSort from "../TasksSection/ButtonsSort";
-import TaskItem from "../TasksSection/TaskItem";
+import TaskItem from "../TasksSection/TaskItem/TaskItem";
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
   const dispatch = useAppDispatch();
 
   const openModalHandler = () => {
-    dispatch(modalActions.openModalHandler());
+    dispatch(modalActions.openModalCreateTask());
   };
 
   const tasksTitle = `${title} (${tasks.length} ${
