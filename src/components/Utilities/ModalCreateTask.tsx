@@ -52,6 +52,14 @@ const ModalCreateTask: React.FC<{
     }
     return false;
   });
+
+  const [isCompleted, setIsCompleted] = useState<boolean>(() => {
+    if (task) {
+      return task.completed;
+    }
+    return false;
+  });
+
   const [selectedDirectory, setSelectedDirectory] = useState<string>(() => {
     if (task) {
       return task.dir;
@@ -71,7 +79,7 @@ const ModalCreateTask: React.FC<{
         dir: selectedDirectory,
         description: description,
         date: date,
-        completed: false,
+        completed: isCompleted,
         important: isImportant,
         id: task?.id ? task.id : Date.now().toString(),
       };
@@ -144,6 +152,16 @@ const ModalCreateTask: React.FC<{
               className="w-4 h-4 basis-4 mr-2"
               checked={isImportant}
               onChange={() => setIsImportant((prev) => !prev)}
+            />
+          </label>
+
+          <label className="mb-0 flex">
+            <span className="order-1 flex-1">Mark as completed</span>
+            <input
+              type="checkbox"
+              className="w-4 h-4 basis-4 mr-2"
+              checked={isCompleted}
+              onChange={() => setIsCompleted((prev) => !prev)}
             />
           </label>
 

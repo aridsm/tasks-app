@@ -22,6 +22,10 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
     dispatch(tasksActions.removeTask(id));
   };
 
+  const toggleTaskCompleted = (id: string) => {
+    dispatch(tasksActions.toggleTaskCompleted(id));
+  };
+
   return (
     <li key={task.id}>
       <Link
@@ -41,15 +45,16 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
             isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"
           }`}
         >
-          <span
+          <button
             className={`${
               task.completed
                 ? "bg-emerald-200 text-emerald-700 "
                 : "bg-yellow-100 text-yellow-700 "
             } py-1 px-3 rounded-full font-medium  mr-4`}
+            onClick={() => toggleTaskCompleted(task.id)}
           >
             {task.completed ? "completed" : "not completed"}
-          </span>
+          </button>
           <Tooltip
             txt={task.important ? "unmark as important" : "mark as important"}
             className="mr-2 ml-auto"
