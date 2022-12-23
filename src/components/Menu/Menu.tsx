@@ -24,7 +24,7 @@ const Menu: React.FC = () => {
       <NavLinks classActive={classLinkActive} />
       <Directories classActive={classLinkActive} />
       <button
-        className="mx-4 mt-auto mb-8 text-left"
+        className="mx-4 mt-auto mb-8 text-left pt-4"
         onClick={deleteAllTasksHandler}
       >
         Delete all tasks

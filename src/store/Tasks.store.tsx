@@ -55,7 +55,7 @@ const initialState: { tasks: Task[]; directories: string[] } = {
       date: "2022-10-18",
       completed: false,
       important: false,
-      id: "dhsD1",
+      id: "dhsda1",
     },
     {
       title: "Study",
@@ -97,7 +97,7 @@ const tasksSlice = createSlice({
       const directoryAlreadyExists =
         state.directories.includes(newDirectoryName);
       if (directoryAlreadyExists) return;
-      state.directories = [...state.directories, newDirectoryName];
+      state.directories = [newDirectoryName, ...state.directories];
     },
   },
 });

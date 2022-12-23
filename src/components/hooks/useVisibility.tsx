@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
 
-const useVisibility = (element: any, fnClose?: () => void) => {
+const useVisibility = (elements: any[], fnClose?: () => void) => {
   const [elementIsVisible, setElementIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const checkClick = (e: any) => {
-      if (!element) return;
-      if (e.target !== element && !element.contains(e.target as HTMLElement)) {
-        if (fnClose) fnClose();
+      if (!elements) return;
+
+      const clickedOutsideElement = elements.every((element) => {
+        if (!element) return false;
+        if (
+          e.target !== element &&
+          !element.contains(e.target as HTMLElement)
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      if (clickedOutsideElement) {
         setElementIsVisible(false);
+        if (fnClose) fnClose();
       }
     };
 
@@ -16,7 +28,7 @@ const useVisibility = (element: any, fnClose?: () => void) => {
     return () => {
       document.removeEventListener("click", checkClick);
     };
-  }, [element, fnClose]);
+  }, [elements, fnClose]);
 
   const closeElement = () => {
     setElementIsVisible(false);

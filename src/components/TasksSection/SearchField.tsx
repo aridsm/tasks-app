@@ -16,7 +16,7 @@ const SearchField: React.FC = () => {
     elementIsVisible: listResultsVisible,
     showElement: showListResults,
     closeElement: closeListResults,
-  } = useVisibility(searchResultsRef.current!, () => setSearchInputValue(""));
+  } = useVisibility([searchResultsRef.current!], () => setSearchInputValue(""));
 
   useEffect(() => {
     const filteredTasks = tasks.filter((task: Task) => {

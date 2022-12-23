@@ -40,7 +40,8 @@
     @apply w-6 h-6;
   }
   .stylesInputsField input,
-  .stylesInputsField textarea {
+  .stylesInputsField textarea,
+  .stylesInputsField select {
     @apply inputStyles mt-1;
   }
   .stylesInputsField label {
