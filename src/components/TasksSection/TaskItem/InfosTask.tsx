@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
 import ModalCreateTask from "../../Utilities/ModalTask";
 import Tooltip from "../../Utilities/Tooltip";
+import useDate from "../../hooks/useDate";
 
 const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
   task,
@@ -14,17 +15,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
   const [modalEditTaskOpen, setModalEditTaskOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const fullDate: Date = new Date(task.date.replaceAll("-", "/"));
-  const month: number = fullDate.getMonth() + 1;
-  const day: number = fullDate.getDate();
-  const year: number = fullDate.getFullYear();
-
-  const dateFormated: string =
-    month.toString().padStart(2, "0") +
-    "/" +
-    day.toString().padStart(2, "0") +
-    "/" +
-    year;
+  const dateFormated = useDate(task.date);
 
   const closeModalEditTask = () => {
     setModalEditTaskOpen(false);
@@ -65,7 +56,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
           />
         )}
       </div>
-      <p className="description text-slate-400 dark:text-slate-500">
+      <p className="description text-slate-500 dark:text-slate-500">
         {task.description}
       </p>
       <time className="mt-auto flex w-full">

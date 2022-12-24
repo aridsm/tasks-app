@@ -4,6 +4,7 @@ import Directory from "../Routes/Directory";
 import DoneTasks from "../Routes/DoneTasks";
 import Home from "../Routes/Home";
 import ImportantTasks from "../Routes/ImportantTasks";
+import SearchResults from "../Routes/SearchResults";
 import TodaysTasks from "../Routes/TodaysTasks";
 import HeaderTasks from "./HeaderTasks";
 
@@ -23,6 +24,7 @@ const TasksSection: React.FC = () => {
           path="/upcoming"
           element={<DoneTasks done={false} title="Uncompleted tasks" />}
         />
+        <Route path="/results" element={<SearchResults />} />
         <Route path="/:dir" element={<Directory />} />
       </Routes>
     </main>

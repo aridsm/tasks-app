@@ -77,7 +77,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
     if (sortedBy === "min-date" || sortedBy === "max-date") {
       setSortedTasks(sortByDate(sortedBy));
     }
-    if (sortedBy === "") {
+    if (sortedBy === "" || sortedBy === "order-added") {
       setSortedTasks(tasks);
     }
     if (sortedBy === "completed-first") {

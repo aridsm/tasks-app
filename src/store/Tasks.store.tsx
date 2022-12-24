@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "../interfaces";
 
-const initialState: { tasks: Task[]; directories: string[] } = {
+const initialState: {
+  tasks: Task[];
+  directories: string[];
+} = {
   tasks: [
     {
       title: "Wash the dishes",
@@ -67,7 +70,7 @@ const initialState: { tasks: Task[]; directories: string[] } = {
       id: "dhsD1",
     },
   ],
-  directories: ["Home", "School"],
+  directories: ["Home", "School", "Main"],
 };
 
 const tasksSlice = createSlice({
@@ -75,7 +78,7 @@ const tasksSlice = createSlice({
   initialState: initialState,
   reducers: {
     addNewTask(state, action: PayloadAction<Task>) {
-      state.tasks = [...state.tasks, action.payload];
+      state.tasks = [action.payload, ...state.tasks];
     },
     removeTask(state, action) {
       const newTasksList = state.tasks.filter(

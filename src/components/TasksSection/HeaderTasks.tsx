@@ -28,7 +28,7 @@ const HeaderTasks: React.FC = () => {
     "December",
   ];
 
-  const todayDate: string = `${year}, ${monthName[month].slice(0, 3)} ${day
+  const todayDate = `${year}, ${monthName[month].slice(0, 3)} ${day
     .toString()
     .padStart(2, "0")}`;
 

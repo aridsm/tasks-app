@@ -41,9 +41,11 @@ const ItemDirectory: React.FC<{ dir: string; classActive: string }> = ({
           {dir}
         </NavLink>
 
-        <button onClick={() => setModalIsShown(true)}>
-          <Trash className="w-5 h-5" />
-        </button>
+        {dir !== "Main" && (
+          <button onClick={() => setModalIsShown(true)}>
+            <Trash className="w-5 h-5" />
+          </button>
+        )}
       </li>
     </>
   );
