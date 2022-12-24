@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .inputStyles {
-  @apply bg-slate-100 text-slate-600 rounded-lg p-3 outline-transparent border-2 border-transparent hover:border-violet-600 focus:border-violet-600 focus:outline-none transition dark:bg-slate-800/[.5];
+  @apply bg-slate-100 text-slate-600 dark:text-slate-200 rounded-lg p-3 outline-transparent border-2 border-transparent hover:border-violet-600 focus:border-violet-600 focus:outline-none transition dark:bg-slate-800/[.5];
 }
 
 .btn {
@@ -22,7 +22,7 @@
     @apply text-violet-300;
   }
   .tasksList > li:first-of-type article > div {
-    @apply border-violet-500 dark:border-violet-800;
+    @apply border-violet-500 dark:border-violet-700;
   }
   .listView1 article {
     @apply h-40;

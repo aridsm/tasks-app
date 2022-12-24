@@ -4,7 +4,8 @@ import { ReactComponent as OptionsSvg } from "../../../assets/options.svg";
 import { ReactComponent as Calendar } from "../../../assets/date.svg";
 import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
-import ModalCreateTask from "../../Utilities/ModalCreateTask";
+import ModalCreateTask from "../../Utilities/ModalTask";
+import Tooltip from "../../Utilities/Tooltip";
 
 const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
   task,
@@ -47,12 +48,14 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
         <span className="block font-medium dark:text-slate-200">
           {task.title}
         </span>
-        <button
-          className="rounded-full hover:bg-slate-200 w-8 h-8 grid place-items-center dark:hover:bg-slate-800"
-          onClick={openModalEditTask}
-        >
-          <OptionsSvg className="w-5 h-5" />
-        </button>
+        <Tooltip txt="edit task">
+          <button
+            className="rounded-full hover:bg-slate-200 w-8 h-8 grid place-items-center dark:hover:bg-slate-800"
+            onClick={openModalEditTask}
+          >
+            <OptionsSvg className="w-5 h-5" />
+          </button>
+        </Tooltip>
         {modalEditTaskOpen && (
           <ModalCreateTask
             onClose={closeModalEditTask}

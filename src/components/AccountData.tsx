@@ -21,6 +21,7 @@ const AccountData: React.FC = () => {
 
   const percentageAllTasks = (allTasksDone.length * 100) / tasks.length;
 
+  const todaysTasksToShow = todaysTasks.slice(0, 3);
   return (
     <section className="p-5 bg-slate-100 flex flex-col w-2/12 fixed top-0 right-0 h-screen dark:bg-slate-800/[.5]">
       <span className="flex items-center mx-auto">
@@ -63,6 +64,20 @@ const AccountData: React.FC = () => {
           No tasks today
         </span>
       )}
+
+      {todaysTasks.length > 0 && (
+        <div className="mt-8">
+          <span className="mb-2 block">Today's tasks</span>
+          <ul>
+            {todaysTasksToShow.map((task) => (
+              <li className="py-2 pl-6 text-slate-200 list-item">
+                <span>{task.title}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <a
         href="/"
         className="mt-auto bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-800 dark:text-slate-200"
