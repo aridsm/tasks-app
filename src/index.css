@@ -56,6 +56,12 @@
   .barProgress > div {
     @apply bg-violet-500 h-full;
   }
+  .itemDirectory > button {
+    @apply opacity-0 transition;
+  }
+  .itemDirectory:hover > button {
+    @apply opacity-100;
+  }
 }
 
 /* clears the 'X' from Internet Explorer */

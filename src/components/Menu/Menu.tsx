@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { tasksActions } from "../../store/Tasks.store";
 import BtnAddTask from "../Utilities/BtnAddTask";
 import ModalConfirm from "../Utilities/ModalConfirm";
-import Directories from "./Directories";
+import Directories from "./Directories/Directories";
 import NavLinks from "./NavLinks";
 
 const classLinkActive =
