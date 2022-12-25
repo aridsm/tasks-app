@@ -54,12 +54,12 @@
     @apply bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700;
   }
   .barProgress > div {
-    @apply bg-violet-500 h-full;
+    @apply bg-violet-600 h-full;
   }
-  .itemDirectory > button {
+  .itemDirectory > .buttonsDir {
     @apply opacity-0 transition;
   }
-  .itemDirectory:hover > button {
+  .itemDirectory:hover > .buttonsDir {
     @apply opacity-100;
   }
 }

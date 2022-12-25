@@ -29,6 +29,8 @@ const SearchField: React.FC = () => {
 
   const matchedTasks = useSearchQuery(searchInputValue);
 
+  const tasks = matchedTasks.slice(0, 4);
+
   const {
     elementIsVisible: listResultsVisible,
     showElement: showListResults,
@@ -67,10 +69,10 @@ const SearchField: React.FC = () => {
       <Search className="absolute w-5 right-4 top-3.5 text-slate-400" />
       {listResultsVisible && (
         <div className="absolute bg-slate-100 rounded-md w-full top-14 p-3 dark:bg-slate-800 z-10">
-          {matchedTasks.length ? (
+          {tasks.length ? (
             <>
               <ul>
-                {matchedTasks.map((task) => (
+                {tasks.map((task) => (
                   <ItemSearch key={task.id} task={task} />
                 ))}
               </ul>

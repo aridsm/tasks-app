@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Directory from "../Routes/Directory";
 import DoneTasks from "../Routes/DoneTasks";
 import Home from "../Routes/Home";
@@ -26,6 +26,7 @@ const TasksSection: React.FC = () => {
         />
         <Route path="/results" element={<SearchResults />} />
         <Route path="/:dir" element={<Directory />} />
+        <Route path="*" element={<Navigate to="" />} />
       </Routes>
     </main>
   );

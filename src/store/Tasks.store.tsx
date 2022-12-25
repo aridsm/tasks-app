@@ -112,17 +112,34 @@ const tasksSlice = createSlice({
       state.tasks = [];
     },
     createDirectory(state, action: PayloadAction<string>) {
-      const newDirectoryName: string = action.payload;
-      const directoryAlreadyExists =
-        state.directories.includes(newDirectoryName);
+      const newDirectory: string = action.payload;
+      const directoryAlreadyExists = state.directories.includes(newDirectory);
       if (directoryAlreadyExists) return;
-      state.directories = [newDirectoryName, ...state.directories];
+      state.directories = [newDirectory, ...state.directories];
     },
     deleteDirectory(state, action: PayloadAction<string>) {
       const dirName = action.payload;
 
       state.directories = state.directories.filter((dir) => dir !== dirName);
       state.tasks = state.tasks.filter((task) => task.dir !== dirName);
+    },
+    editDirectoryName(
+      state,
+      action: PayloadAction<{ newDirName: string; previousDirName: string }>
+    ) {
+      const newDirName: string = action.payload.newDirName;
+      const previousDirName: string = action.payload.previousDirName;
+      const directoryAlreadyExists = state.directories.includes(newDirName);
+      if (directoryAlreadyExists) return;
+
+      const dirIndex = state.directories.indexOf(previousDirName);
+
+      state.directories[dirIndex] = newDirName;
+      state.tasks.forEach((task) => {
+        if (task.dir === previousDirName) {
+          task.dir = newDirName;
+        }
+      });
     },
   },
 });
