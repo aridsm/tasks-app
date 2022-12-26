@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import BtnAddTask from "../Utilities/BtnAddTask";
 import { ReactComponent as IconBell } from "../../assets/bell.svg";
 import Tooltip from "../Utilities/Tooltip";
 import SearchField from "./SearchField";
+import useVisibility from "../hooks/useVisibility";
 
 const classHasNotification =
   "after:content-[''] after:w-2 after:h-2 after:bg-rose-500 block after:rounded-full after:absolute after:bottom-3/4  after:left-3/4";
 
 const HeaderTasks: React.FC = () => {
+  const refBtnNotification = useRef<HTMLButtonElement>(null);
   const date: Date = new Date();
   const year: number = date.getFullYear();
   const month: number = date.getMonth();
@@ -36,6 +38,26 @@ const HeaderTasks: React.FC = () => {
     .toString()
     .padStart(2, "0")}}`;
 
+  const {
+    elementIsVisible: notificationIsVisible,
+    showElement: showNotifications,
+  } = useVisibility([refBtnNotification.current]);
+  /*
+  const sorted = tasksCopy.sort((task1, task2) => {
+    const date1 = toMillisseconds(task1.date);
+    const date2 = toMillisseconds(task2.date);
+
+    if (date1 < date2) {
+      return -1;
+    }
+
+    if (date1 > date2) {
+      return 1;
+    }
+
+    return 0;
+  });*/
+
   return (
     <header className="flex items-center">
       <SearchField />
@@ -43,14 +65,23 @@ const HeaderTasks: React.FC = () => {
         {todayDate}
       </time>
       <div className="flex flex-1">
-        <Tooltip txt="see notifications" className="mr-6 ml-auto">
-          <button
-            className={`relative ${classHasNotification}`}
-            title="notifications"
-          >
-            <IconBell className="fill-violet-600 w-6 h-6 dark:fill-violet-800" />
-          </button>
-        </Tooltip>
+        <div className="mr-6 ml-auto grid place-items-center relative">
+          <Tooltip txt="see notifications">
+            <button
+              ref={refBtnNotification}
+              onClick={showNotifications}
+              className={`relative ${classHasNotification}`}
+            >
+              <IconBell className="fill-violet-600 w-6 h-6 dark:fill-violet-800" />
+            </button>
+          </Tooltip>
+          {notificationIsVisible && (
+            <ul className="absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-max">
+              <li>my notification 1</li>
+              <li>my notification 2</li>
+            </ul>
+          )}
+        </div>
 
         <BtnAddTask />
       </div>

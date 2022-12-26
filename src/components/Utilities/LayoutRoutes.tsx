@@ -114,7 +114,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
              text-slate-400 w-full rounded-lg
               border-dashed transition hover:bg-slate-300
                hover:text-slate-500
-               dark:border-slate-700 dark:hover:bg-slate-800 ${
+               dark:border-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-300 ${
                  isListInView1 ? "h-32" : "h-64"
                }`}
           >

@@ -77,7 +77,8 @@ const ItemDirectory: React.FC<{ dir: string; classActive: string }> = ({
         {!inputDirIsVisible && (
           <NavLink
             to={`/${dir}`}
-            className="hover:text-rose-600 dark:hover:text-slate-200"
+            title={dir}
+            className="hover:text-rose-600 dark:hover:text-slate-200 text-ellipsis whitespace-nowrap overflow-hidden max-w-[7rem]"
           >
             {dir}
           </NavLink>
