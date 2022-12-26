@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import BtnAddTask from "../Utilities/BtnAddTask";
 import { ReactComponent as IconBell } from "../../assets/bell.svg";
+import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import Tooltip from "../Utilities/Tooltip";
 import SearchField from "./SearchField";
 import useVisibility from "../hooks/useVisibility";
@@ -42,24 +43,12 @@ const HeaderTasks: React.FC = () => {
     elementIsVisible: notificationIsVisible,
     showElement: showNotifications,
   } = useVisibility([refBtnNotification.current]);
-  /*
-  const sorted = tasksCopy.sort((task1, task2) => {
-    const date1 = toMillisseconds(task1.date);
-    const date2 = toMillisseconds(task2.date);
-
-    if (date1 < date2) {
-      return -1;
-    }
-
-    if (date1 > date2) {
-      return 1;
-    }
-
-    return 0;
-  });*/
 
   return (
     <header className="flex items-center">
+      <button className="mr-6">
+        <MenuIcon />
+      </button>
       <SearchField />
       <time dateTime={dateTimeFormat} className="flex-1 text-center">
         {todayDate}

@@ -62,6 +62,9 @@
   .itemDirectory:hover > .buttonsDir {
     @apply opacity-100;
   }
+  .layoutMenuAccount {
+    @apply bg-slate-100 hidden xl:flex flex-col h-screen w-2/12 xl:fixed dark:bg-slate-800/[.5];
+  }
 }
 
 /* clears the 'X' from Internet Explorer */

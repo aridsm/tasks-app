@@ -9,7 +9,7 @@ const classLinkActive =
 const Menu: React.FC = () => {
   return (
     <>
-      <header className="bg-slate-100 flex flex-col h-screen w-2/12 fixed left-0 dark:bg-slate-800/[.5]">
+      <header className="layoutMenuAccount xl:left-0">
         <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide">
           To-do list
         </h1>

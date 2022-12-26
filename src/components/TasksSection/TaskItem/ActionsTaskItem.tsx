@@ -40,16 +40,21 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
           isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"
         }`}
       >
-        <button
-          className={`${
-            task.completed
-              ? "bg-emerald-200 text-emerald-700 "
-              : "bg-yellow-100 text-yellow-700 "
-          } py-1 px-3 rounded-full font-medium  mr-4`}
-          onClick={() => toggleTaskCompleted(task.id)}
+        <Tooltip
+          txt={task.completed ? "mark as uncompleted" : "mark as completed"}
+          className="mr-4"
         >
-          {task.completed ? "completed" : "not completed"}
-        </button>
+          <button
+            className={`${
+              task.completed
+                ? "bg-emerald-200 text-emerald-700 "
+                : "bg-yellow-100 text-yellow-700 "
+            } py-1 px-3 rounded-full font-medium`}
+            onClick={() => toggleTaskCompleted(task.id)}
+          >
+            {task.completed ? "completed" : "uncompleted"}
+          </button>
+        </Tooltip>
         <Tooltip
           txt={task.important ? "unmark as important" : "mark as important"}
           className="mr-2 ml-auto"
