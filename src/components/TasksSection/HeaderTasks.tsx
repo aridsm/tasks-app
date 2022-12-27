@@ -57,16 +57,19 @@ const HeaderTasks: React.FC = () => {
   };
 
   return (
-    <header className="flex items-center">
-      <button className="mr-6" onClick={openMenuHeaderHandler}>
+    <header className="sm:flex items-center grid grid-cols-3 gap-4 sm:gap-0">
+      <button className="mr-6 block xl:hidden" onClick={openMenuHeaderHandler}>
         <MenuIcon />
       </button>
       <SearchField />
-      <time dateTime={dateTimeFormat} className="flex-1 text-center">
-        {todayDate}
-      </time>
-      <div className="flex flex-1">
-        <div className="mr-6 ml-auto grid place-items-center relative">
+      <div className="flex-1 text-center">
+        <span className="text-slate-600 dark:text-slate-200 uppercase font-bold text-sm block xl:hidden">
+          To-do list
+        </span>
+        <time dateTime={dateTimeFormat}>{todayDate}</time>
+      </div>
+      <div className="flex flex-2">
+        <div className="mr-2 sm:mr-6 ml-auto grid place-items-center relative">
           <Tooltip txt="see notifications">
             <button
               ref={refBtnNotification}
@@ -83,9 +86,10 @@ const HeaderTasks: React.FC = () => {
             </ul>
           )}
         </div>
-
-        <BtnAddTask />
-        <button onClick={openMenuAccountHandler}>
+        <div className="sm:static fixed bottom-3 left-0 right-0 z-20 text-center">
+          <BtnAddTask className=" min-w-max shadow-lg shadow-slate-400  dark:shadow-slate-900 sm:shadow-transparent" />
+        </div>
+        <button onClick={openMenuAccountHandler} className="block xl:hidden">
           <img
             src={avatar1}
             alt="cat"

@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 import LayoutMenus from "../Utilities/LayoutMenus";
 
 const classLinkActive =
-  "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-200";
+  "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-700/[.2] dark:text-slate-200 dark:border-slate-200";
 
 const Menu: React.FC = () => {
   const menuOpen = useAppSelector((state) => state.menu.menuHeaderOpened);

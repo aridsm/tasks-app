@@ -22,7 +22,7 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
         </Tooltip>
         <article
           className={`bg-slate-100 rounded-lg p-4 flex text-left transition hover:shadow-lg hover:shadow-slate-300 dark:bg-slate-800 dark:hover:shadow-transparent ${
-            isListInView1 ? "flex-row h-32" : "flex-col h-64"
+            isListInView1 ? "flex-row h-32" : "flex-col h-52 sm:h-64"
           }`}
         >
           <InfosTask task={task} isListInView1={isListInView1} />
