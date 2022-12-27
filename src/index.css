@@ -63,7 +63,7 @@
     @apply opacity-100;
   }
   .layoutMenuAccount {
-    @apply bg-slate-100 hidden xl:flex flex-col h-screen w-2/12 xl:fixed dark:bg-slate-800/[.5];
+    @apply bg-slate-100 xl:flex flex-col h-screen w-60 xl:w-2/12 fixed dark:bg-slate-800/[.5] z-20;
   }
 }
 
