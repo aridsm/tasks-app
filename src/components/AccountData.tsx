@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import avatar1 from "../assets/avatar-1.jpg";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { menusActions } from "../store/Menu.store";
 import { tasksActions } from "../store/Tasks.store";
 import useCompletedTasks from "./hooks/useCompletedTasks";
+import useScreenMedia from "./hooks/useScreenMedia";
 import useTodayTasks from "./hooks/useTodayTasks";
 import ModalConfirm from "./Utilities/ModalConfirm";
 
 const AccountData: React.FC = () => {
   const todaysTasks = useTodayTasks();
   const tasks = useAppSelector((state) => state.tasks.tasks);
+  const menuOpen = useAppSelector((state) => state.menu.menuAccountOpened);
+  const mediaQueries = useScreenMedia();
 
   const todayTasksDone = useCompletedTasks({ tasks: todaysTasks, done: true });
   const allTasksDone = useCompletedTasks({ tasks: tasks, done: true });
@@ -32,6 +36,9 @@ const AccountData: React.FC = () => {
   const deleteAllTasksHandler = () => {
     dispatch(tasksActions.deleteAllTasks());
   };
+  const closeMenuHandler = () => {
+    dispatch(menusActions.closeMenuAccount());
+  };
 
   return (
     <>
@@ -42,7 +49,11 @@ const AccountData: React.FC = () => {
           onConfirm={deleteAllTasksHandler}
         />
       )}
-      <section className="layoutMenuAccount p-5 xl:top-0 xl:right-0">
+      <section
+        className={`layoutMenuAccount p-5 top-0 right-0  ${
+          menuOpen || mediaQueries.xl ? "flex" : "hidden"
+        }`}
+      >
         <span className="flex items-center mx-auto">
           <span className="font-medium">Hi, Ariane!</span>
           <img src={avatar1} alt="cat" className="w-10 rounded-full ml-4" />
@@ -111,6 +122,12 @@ const AccountData: React.FC = () => {
           Projected by Ariane Morelato
         </a>
       </section>
+      {menuOpen && !mediaQueries.xl && (
+        <div
+          className="fixed bg-slate-600/[.2] w-full h-full z-10 top-0 left-0"
+          onClick={closeMenuHandler}
+        ></div>
+      )}
     </>
   );
 };

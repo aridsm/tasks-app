@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { menuActions } from "../../store/Menu.store";
+import { menusActions } from "../../store/Menu.store";
 import BtnAddTask from "../Utilities/BtnAddTask";
 import Directories from "./Directories/Directories";
 import NavLinks from "./NavLinks";
@@ -10,13 +10,13 @@ const classLinkActive =
   "text-rose-600 bg-violet-100 border-r-4 border-rose-400 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-200";
 
 const Menu: React.FC = () => {
-  const menuOpen = useAppSelector((state) => state.menu.open);
+  const menuOpen = useAppSelector((state) => state.menu.menuHeaderOpened);
   const dispatch = useAppDispatch();
 
   const mediaQueries = useScreenMedia();
 
   const closeMenuHandler = () => {
-    dispatch(menuActions.closeMenu());
+    dispatch(menusActions.closeMenuHeader());
   };
   return (
     <>
