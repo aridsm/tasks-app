@@ -41,10 +41,10 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
         </span>
         <Tooltip txt="edit task">
           <button
-            className="rounded-full hover:bg-slate-200 w-8 h-8 grid place-items-center dark:hover:bg-slate-800"
+            className="rounded-full hover:bg-slate-200 w-6 sm:w-8 h-6 sm:h-8 grid place-items-center dark:hover:bg-slate-700/[.3]"
             onClick={openModalEditTask}
           >
-            <OptionsSvg className="w-5 h-5" />
+            <OptionsSvg className="w-4 sm:w-5 h-4 sm:h-5" />
           </button>
         </Tooltip>
         {modalEditTaskOpen && (
@@ -56,11 +56,14 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
           />
         )}
       </div>
-      <p className="description text-slate-500 dark:text-slate-500">
+      <p
+        title={task.description}
+        className="description text-slate-500 dark:text-slate-500 line-clamp-2"
+      >
         {task.description}
       </p>
       <time className="mt-auto flex w-full">
-        <Calendar className="mr-2 w-5" /> {dateFormated}
+        <Calendar className="mr-2 w-4 sm:w-5" /> {dateFormated}
       </time>
     </div>
   );

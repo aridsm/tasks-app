@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ReactComponent as StarLine } from "../../../assets/star-line.svg";
 import { ReactComponent as Trash } from "../../../assets/trash.svg";
+import { ReactComponent as SvgX } from "../../../assets/x.svg";
+import { ReactComponent as Check } from "../../../assets/check.svg";
 import { Task } from "../../../interfaces";
 import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
@@ -36,7 +38,7 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
         />
       )}
       <div
-        className={`flex border-dashed border-slate-200 dark:border-slate-800 ${
+        className={`flex border-dashed border-slate-200 dark:border-slate-700/[.3] ${
           isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"
         }`}
       >
@@ -47,12 +49,21 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
           <button
             className={`${
               task.completed
-                ? "bg-emerald-200 text-emerald-700 "
+                ? "bg-emerald-200 text-emerald-800 "
                 : "bg-yellow-100 text-yellow-700 "
-            } py-1 px-3 rounded-full font-medium`}
+            } rounded-full font-medium`}
             onClick={() => toggleTaskCompleted(task.id)}
           >
-            {task.completed ? "completed" : "uncompleted"}
+            <span className="block py-1 px-3 absolute invisible sm:static sm:visible">
+              {task.completed ? "completed" : "uncompleted"}
+            </span>
+            <span className="p-1 block sm:hidden">
+              {task.completed ? (
+                <Check className="w-3 h-3" />
+              ) : (
+                <SvgX className="w-3 h-3" />
+              )}
+            </span>
           </button>
         </Tooltip>
         <Tooltip
@@ -64,7 +75,7 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
             className="transition hover:text-slate-700 dark:hover:text-slate-200"
           >
             <StarLine
-              className={`w-6 h-6 ${
+              className={`w-5 h-5 sm:w-6 sm:h-6 ${
                 task.important ? "fill-rose-500 stroke-rose-500 " : "fill-none"
               }`}
             />
@@ -75,7 +86,7 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
           className="transition hover:text-slate-700 dark:hover:text-slate-200"
         >
           <button onClick={() => setIsModalShown(true)}>
-            <Trash />
+            <Trash className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </Tooltip>
       </div>
