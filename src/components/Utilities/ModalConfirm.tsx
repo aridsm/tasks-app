@@ -12,7 +12,7 @@ const ModalConfirm: React.FC<{
   };
   return (
     <Modal onClose={onClose}>
-      <h2 className="font-medium mb-5 text-2xl">Are you sure?</h2>
+      <h2 className="font-medium mb-5 text-lg md:text-2xl">Are you sure?</h2>
       <p className="text-slate-500">{text}</p>
       <div className="mt-7 ml-auto">
         <button onClick={onClose}>Cancel</button>

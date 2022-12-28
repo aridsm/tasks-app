@@ -39,7 +39,7 @@ const Tooltip: React.FC<Props> = ({ txt, children, className }) => {
       </span>
       <div
         ref={tooltipRef}
-        className={`absolute bg-slate-600 dark:bg-black rounded-md w-max py-1 px-2 top-full text-slate-200 z-10 ${tooltipPosition} ${
+        className={`absolute bg-slate-600 dark:bg-black rounded-md w-max py-1 px-2 top-full text-slate-200 z-30 ${tooltipPosition} ${
           tooltipVisible ? "block" : "hidden"
         }`}
       >

@@ -31,7 +31,7 @@ const BtnToggleCompleted: React.FC<{
         <span className="block py-1 px-3 absolute invisible sm:static sm:visible">
           {taskCompleted ? "completed" : "uncompleted"}
         </span>
-        <span className="p-1 block sm:hidden">
+        <span className=" sm:hidden w-6 h-6 grid place-items-center">
           {taskCompleted ? (
             <Check className="w-3 h-3" />
           ) : (

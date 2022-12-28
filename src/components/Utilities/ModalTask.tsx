@@ -89,7 +89,7 @@ const ModalCreateTask: React.FC<{
   };
   return (
     <Modal onClose={onClose}>
-      <h2 className="font-medium mb-5 text-2xl">{nameForm}</h2>
+      <h2 className="font-medium mb-5 text-lg md:text-2xl">{nameForm}</h2>
       <form
         className="flex flex-col stylesInputsField"
         onSubmit={addNewTaskHandler}
