@@ -86,7 +86,7 @@ const HeaderTasks: React.FC = () => {
             </ul>
           )}
         </div>
-        <BtnAddTask className="sm:static fixed bottom-3 right-3 z-20 min-w-max shadow-lg shadow-slate-400  dark:shadow-slate-900 sm:shadow-transparent" />
+        <BtnAddTask className="sm:static fixed bottom-3 right-3 z-10 sm:z-0 min-w-max shadow-lg shadow-slate-400  dark:shadow-slate-900 sm:shadow-transparent" />
 
         <button onClick={openMenuAccountHandler} className="block xl:hidden">
           <img

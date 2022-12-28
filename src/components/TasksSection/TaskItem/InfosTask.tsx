@@ -1,33 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Task } from "../../../interfaces";
-import { ReactComponent as OptionsSvg } from "../../../assets/options.svg";
 import { ReactComponent as Calendar } from "../../../assets/date.svg";
-import { useAppDispatch } from "../../../store/hooks";
-import { tasksActions } from "../../../store/Tasks.store";
-import ModalCreateTask from "../../Utilities/ModalTask";
-import Tooltip from "../../Utilities/Tooltip";
 import useDate from "../../hooks/useDate";
 
 const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
   task,
   isListInView1,
 }) => {
-  const [modalEditTaskOpen, setModalEditTaskOpen] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
-
   const dateFormated = useDate(task.date);
-
-  const closeModalEditTask = () => {
-    setModalEditTaskOpen(false);
-  };
-
-  const openModalEditTask = () => {
-    setModalEditTaskOpen(true);
-  };
-
-  const editTaskHandler = (task: Task) => {
-    dispatch(tasksActions.editTask(task));
-  };
 
   return (
     <div className="flex flex-col flex-1">
@@ -39,22 +19,6 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
         <span className="block font-medium dark:text-slate-200">
           {task.title}
         </span>
-        <Tooltip txt="edit task">
-          <button
-            className="rounded-full hover:bg-slate-200 w-6 sm:w-8 h-6 sm:h-8 grid place-items-center dark:hover:bg-slate-700/[.3]"
-            onClick={openModalEditTask}
-          >
-            <OptionsSvg className="w-4 sm:w-5 h-4 sm:h-5" />
-          </button>
-        </Tooltip>
-        {modalEditTaskOpen && (
-          <ModalCreateTask
-            onClose={closeModalEditTask}
-            task={task}
-            nameForm="Edit task"
-            onConfirm={editTaskHandler}
-          />
-        )}
       </div>
       <p
         title={task.description}
