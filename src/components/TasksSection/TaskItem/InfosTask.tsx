@@ -10,7 +10,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
   const dateFormated = useDate(task.date);
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className={`flex flex-col flex-1 ${isListInView1 ? "mr-6" : ""}`}>
       <div
         className={`flex items-center justify-between ${
           isListInView1 ? "mb-1" : "mb-2"
@@ -22,7 +22,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
       </div>
       <p
         title={task.description}
-        className="description text-slate-500 dark:text-slate-500 line-clamp-3"
+        className="description mb-2 text-slate-500 dark:text-slate-500 line-clamp-3"
       >
         {task.description}
       </p>

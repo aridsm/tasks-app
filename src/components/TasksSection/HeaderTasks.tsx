@@ -80,7 +80,7 @@ const HeaderTasks: React.FC = () => {
             </button>
           </Tooltip>
           {notificationIsVisible && (
-            <ul className="absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-max">
+            <ul className="absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-max border border-slate-300 dark:border-slate-700">
               <li>my notification 1</li>
               <li>my notification 2</li>
             </ul>

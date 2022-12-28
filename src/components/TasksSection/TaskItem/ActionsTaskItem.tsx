@@ -16,7 +16,11 @@ const ActionsTaskItem: React.FC<{ task: Task; isListInView1: boolean }> = ({
           isListInView1 ? "items-center" : "border-t-2 w-full pt-4 mt-4"
         }`}
       >
-        <BtnToggleCompleted taskCompleted={task.completed} taskId={task.id} />
+        <BtnToggleCompleted
+          taskCompleted={task.completed}
+          taskId={task.id}
+          isListInView1={isListInView1}
+        />
         <BtnMarkAsImportant task={task} />
         <BtnDeleteTask taskId={task.id} />
         <BtnEditTask task={task} />

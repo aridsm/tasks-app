@@ -8,7 +8,8 @@ import { ReactComponent as Check } from "../../../assets/check.svg";
 const BtnToggleCompleted: React.FC<{
   taskCompleted: boolean;
   taskId: string;
-}> = ({ taskCompleted, taskId }) => {
+  isListInView1: boolean;
+}> = ({ taskCompleted, taskId, isListInView1 }) => {
   const dispatch = useAppDispatch();
 
   const toggleTaskCompleted = (id: string) => {
@@ -18,13 +19,15 @@ const BtnToggleCompleted: React.FC<{
   return (
     <Tooltip
       txt={taskCompleted ? "mark as uncompleted" : "mark as completed"}
-      className="mr-4"
+      className={` ${
+        isListInView1 ? "order-2 mr-0 sm:order-first sm:mr-4" : "mr-4 order-0"
+      }`}
     >
       <button
         className={`${
           taskCompleted
             ? "bg-emerald-200 text-emerald-800 "
-            : "bg-yellow-100 text-yellow-700 "
+            : "bg-amber-200 text-amber-800 "
         } rounded-full font-medium`}
         onClick={() => toggleTaskCompleted(taskId)}
       >
