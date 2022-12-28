@@ -66,7 +66,7 @@ const SearchField: React.FC = () => {
         onChange={({ target }) => setSearchInputValue(target.value)}
         className="inputStyles w-full"
       />
-      <Search className="absolute w-5 right-4 top-3.5 text-slate-400" />
+      <Search className="absolute w-4 sm:w-5 right-4 top-3.5 text-slate-400" />
       {listResultsVisible && (
         <div className="absolute bg-slate-100 rounded-md w-full top-14 p-3 dark:bg-slate-800 z-10">
           {tasks.length ? (

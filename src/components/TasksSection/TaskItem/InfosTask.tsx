@@ -58,7 +58,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
       </div>
       <p
         title={task.description}
-        className="description text-slate-500 dark:text-slate-500 line-clamp-2"
+        className="description text-slate-500 dark:text-slate-500 line-clamp-3"
       >
         {task.description}
       </p>
