@@ -57,7 +57,7 @@ const HeaderTasks: React.FC = () => {
   };
 
   return (
-    <header className="sm:flex items-center grid grid-cols-3 gap-4 sm:gap-0">
+    <header className="items-center grid grid-cols-3 gap-4 sm:gap-0 sm:flex ">
       <button className="mr-6 block xl:hidden" onClick={openMenuHeaderHandler}>
         <MenuIcon />
       </button>
@@ -69,14 +69,14 @@ const HeaderTasks: React.FC = () => {
         <time dateTime={dateTimeFormat}>{todayDate}</time>
       </div>
       <div className="flex flex-2">
-        <div className="mr-2 sm:mr-6 ml-auto grid place-items-center relative">
+        <div className="sm:mr-4 md:mr-6 ml-auto grid place-items-center relative">
           <Tooltip txt="see notifications">
             <button
               ref={refBtnNotification}
               onClick={showNotifications}
               className={`relative ${classHasNotification}`}
             >
-              <IconBell className="fill-violet-600 w-6 h-6 dark:fill-violet-800" />
+              <IconBell className="fill-violet-600 w-5 h-5 md:w-6 md:h-6 dark:fill-violet-800" />
             </button>
           </Tooltip>
           {notificationIsVisible && (

@@ -22,7 +22,7 @@ const Menu: React.FC = () => {
       closeMenuHandler={closeMenuHandler}
       className="left-0"
     >
-      <header className="h-full">
+      <header className="h-full flex flex-col">
         <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide hidden xl:block">
           To-do list
         </h1>
