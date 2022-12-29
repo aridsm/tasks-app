@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
 import ModalConfirm from "../../Utilities/ModalConfirm";
-import Tooltip from "../../Utilities/Tooltip";
 import { ReactComponent as Trash } from "../../../assets/trash.svg";
 
 const BtnDeleteTask: React.FC<{ taskId: string }> = ({ taskId }) => {
@@ -21,14 +20,13 @@ const BtnDeleteTask: React.FC<{ taskId: string }> = ({ taskId }) => {
           onConfirm={removeTaskHandler}
         />
       )}
-      <Tooltip
-        txt="delete task"
+      <button
+        onClick={() => setIsModalShown(true)}
+        title="delete task"
         className="ml-2 transition hover:text-slate-700 dark:hover:text-slate-200"
       >
-        <button onClick={() => setIsModalShown(true)}>
-          <Trash className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-      </Tooltip>
+        <Trash className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
     </>
   );
 };

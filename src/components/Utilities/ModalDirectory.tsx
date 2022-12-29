@@ -34,8 +34,7 @@ const ModalDirectory: React.FC<{
   };
 
   return (
-    <Modal onClose={onClose}>
-      <h2 className="mb-4">{title}</h2>
+    <Modal onClose={onClose} title={title}>
       <form className="stylesInputsField">
         <div className="relative">
           <label htmlFor="dir-name" className="">

@@ -5,7 +5,8 @@ import { ReactComponent as SvgX } from "../../assets/x.svg";
 const ModalContent: React.FC<{
   children: React.ReactNode;
   onClose: () => void;
-}> = ({ children, onClose }) => {
+  title: string;
+}> = ({ children, onClose, title }) => {
   const closeModalHandler = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -25,6 +26,7 @@ const ModalContent: React.FC<{
         >
           <SvgX />
         </button>
+        <h2 className="font-medium mb-5 text-lg md:text-2xl">{title}</h2>
         {children}
       </section>
     </div>
@@ -36,9 +38,10 @@ const modalElement = document.getElementById("modal")! as HTMLElement;
 const Modal: React.FC<{
   children: React.ReactNode;
   onClose: () => void;
-}> = ({ children, onClose }) => {
+  title: string;
+}> = ({ children, onClose, title }) => {
   return ReactDOM.createPortal(
-    <ModalContent children={children} onClose={onClose} />,
+    <ModalContent children={children} onClose={onClose} title={title} />,
     modalElement
   );
 };

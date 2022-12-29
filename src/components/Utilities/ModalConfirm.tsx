@@ -11,8 +11,7 @@ const ModalConfirm: React.FC<{
     onClose();
   };
   return (
-    <Modal onClose={onClose}>
-      <h2 className="font-medium mb-5 text-lg md:text-2xl">Are you sure?</h2>
+    <Modal onClose={onClose} title="Are you sure?">
       <p className="text-slate-500">{text}</p>
       <div className="mt-7 ml-auto">
         <button onClick={onClose}>Cancel</button>

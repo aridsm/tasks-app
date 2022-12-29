@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
@@ -16,7 +16,6 @@ const ItemDirectory: React.FC<{ dir: string; classActive: string }> = ({
 
   const dispatch = useAppDispatch();
 
-  const refButtonEditDir = useRef<HTMLButtonElement>(null);
   const [modalIsShown, setModalIsShown] = useState<boolean>(false);
   const [modalDirIsShown, setModalDirIsShown] = useState<boolean>(false);
 
@@ -71,12 +70,15 @@ const ItemDirectory: React.FC<{ dir: string; classActive: string }> = ({
         {dir !== "Main" && (
           <div className="ml-auto buttonsDir">
             <button
+              title="edit directory name"
               onClick={() => setModalDirIsShown(true)}
-              ref={refButtonEditDir}
             >
               <Edit className="w-5 h-5 mr-2" />
             </button>
-            <button onClick={() => setModalIsShown(true)}>
+            <button
+              title="delete directory"
+              onClick={() => setModalIsShown(true)}
+            >
               <Trash className="w-5 h-5" />
             </button>
           </div>
