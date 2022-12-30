@@ -6,8 +6,14 @@ import useTodayTasks from "../hooks/useTodayTasks";
 const TasksDone: React.FC = () => {
   const todaysTasks = useTodayTasks();
   const tasks = useAppSelector((state) => state.tasks.tasks);
-  const todayTasksDone = useCompletedTasks({ tasks: todaysTasks, done: true });
-  const allTasksDone = useCompletedTasks({ tasks: tasks, done: true });
+  const { tasks: todayTasksDone } = useCompletedTasks({
+    tasks: todaysTasks,
+    done: true,
+  });
+  const { tasks: allTasksDone } = useCompletedTasks({
+    tasks: tasks,
+    done: true,
+  });
 
   const percentageTodayTasks =
     (todayTasksDone.length * 100) / todaysTasks.length;

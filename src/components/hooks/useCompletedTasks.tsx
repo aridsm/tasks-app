@@ -6,8 +6,8 @@ interface Props {
   done: boolean;
 }
 
-const useCompletedTasks = (props: Props): Task[] => {
-  const [tasksDone, setTasksDone] = useState<Task[]>([]);
+const useCompletedTasks = (props: Props): { tasks: Task[] } => {
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
     const filteredTasks: Task[] = props.tasks.filter((task: Task) => {
@@ -17,10 +17,10 @@ const useCompletedTasks = (props: Props): Task[] => {
         return !task.completed;
       }
     });
-    setTasksDone(filteredTasks);
+    setTasks(filteredTasks);
   }, [props.tasks, props.done]);
 
-  return tasksDone;
+  return { tasks };
 };
 
 export default useCompletedTasks;

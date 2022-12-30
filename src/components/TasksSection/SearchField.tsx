@@ -88,7 +88,7 @@ const SearchField: React.FC = () => {
               </button>
             </>
           ) : (
-            <span>No tasks found - {searchInputValue}</span>
+            <span>No tasks found</span>
           )}
         </div>
       )}
