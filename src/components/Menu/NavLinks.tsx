@@ -19,8 +19,8 @@ const links = [
     path: "/done",
   },
   {
-    name: "Upcoming tasks",
-    path: "/upcoming",
+    name: "Uncompleted tasks",
+    path: "/uncompleted",
   },
 ];
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import useDescriptionTitle from "../hooks/useDescriptionTitle";
 import useSearchQuery from "../hooks/useSearchQuery";
 import LayoutRoutes from "../Utilities/LayoutRoutes";
 
@@ -21,12 +22,11 @@ const SearchResults: React.FC = () => {
 
   const matchedTasks = useSearchQuery(currQueryParam);
 
-  return (
-    <LayoutRoutes
-      title={`Results for "${currQueryParam}"`}
-      tasks={matchedTasks}
-    ></LayoutRoutes>
-  );
+  const title = `Results for "${currQueryParam}"`;
+
+  useDescriptionTitle(title, title);
+
+  return <LayoutRoutes title={title} tasks={matchedTasks}></LayoutRoutes>;
 };
 
 export default SearchResults;

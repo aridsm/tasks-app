@@ -22,7 +22,9 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({
       </div>
       <p
         title={task.description}
-        className="description mb-2 text-slate-500 dark:text-slate-500 line-clamp-3"
+        className={`description mb-2 text-slate-500 dark:text-slate-500 ${
+          isListInView1 ? "line-clamp-2 sm:line-clamp-1" : "line-clamp-3"
+        }`}
       >
         {task.description}
       </p>

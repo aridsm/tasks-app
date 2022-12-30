@@ -55,7 +55,7 @@ const SearchField: React.FC = () => {
   }, [closeListResults, searchInputValue, showListResults]);
 
   return (
-    <form className="flex-2 relative col-span-3 row-start-2">
+    <form className="basis-1/3 relative col-span-3 row-start-2">
       <label htmlFor="search" className="sr-only"></label>
       <input
         type="search"

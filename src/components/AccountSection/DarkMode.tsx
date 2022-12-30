@@ -15,9 +15,15 @@ const DarkMode: React.FC = () => {
     if (isCurrentDarkmode) {
       html.classList.add("dark");
       localStorage.setItem("darkmode", "true");
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", "#0f172a");
     } else {
       html.classList.remove("dark");
       localStorage.removeItem("darkmode");
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", "#e2e8f0");
     }
   }, [isCurrentDarkmode]);
 

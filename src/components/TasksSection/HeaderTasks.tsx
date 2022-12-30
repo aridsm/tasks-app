@@ -65,13 +65,13 @@ const HeaderTasks: React.FC = () => {
         <MenuIcon />
       </button>
       <SearchField />
-      <div className="flex-1 text-center">
+      <div className="text-center basis-1/3">
         <span className="text-slate-600 dark:text-slate-200 uppercase font-bold text-sm block xl:hidden">
           To-do list
         </span>
         <time dateTime={dateTimeFormat}>{todayDate}</time>
       </div>
-      <div className="flex flex-2">
+      <div className="flex basis-1/3">
         <div className="sm:mr-4 md:mr-6 ml-auto grid place-items-center relative">
           <button
             ref={refBtnNotification}
