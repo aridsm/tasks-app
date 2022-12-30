@@ -20,6 +20,7 @@ const BtnEditTask: React.FC<{ task: Task }> = ({ task }) => {
   const editTaskHandler = (task: Task) => {
     dispatch(tasksActions.editTask(task));
   };
+
   return (
     <>
       <button

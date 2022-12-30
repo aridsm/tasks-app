@@ -41,4 +41,4 @@ const BtnToggleCompleted: React.FC<{
   );
 };
 
-export default BtnToggleCompleted;
+export default React.memo(BtnToggleCompleted);

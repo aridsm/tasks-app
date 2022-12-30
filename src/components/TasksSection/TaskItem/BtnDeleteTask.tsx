@@ -31,4 +31,4 @@ const BtnDeleteTask: React.FC<{ taskId: string }> = ({ taskId }) => {
   );
 };
 
-export default BtnDeleteTask;
+export default React.memo(BtnDeleteTask);

@@ -31,4 +31,4 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({
   );
 };
 
-export default TaskItem;
+export default React.memo(TaskItem);
