@@ -3,6 +3,29 @@ import { Task } from "../../interfaces";
 import { useAppSelector } from "../../store/hooks";
 import Modal from "./Modal";
 
+const InputCheckbox: React.FC<{
+  label: string;
+  isChecked: boolean;
+  setChecked: (value: React.SetStateAction<boolean>) => void;
+}> = ({ isChecked, setChecked, label }) => {
+  return (
+    <label className="mb-0 flex cursor-pointer">
+      <div className="mr-2 bg-slate-800 w-5 h-5 rounded-full grid place-items-center border border-slate-700">
+        {isChecked && (
+          <span className="bg-rose-500 w-2 h-2 block rounded-full"></span>
+        )}
+      </div>
+      <span className="order-1 flex-1">{label}</span>
+      <input
+        type="checkbox"
+        className="sr-only"
+        checked={isChecked}
+        onChange={() => setChecked((prev: boolean) => !prev)}
+      />
+    </label>
+  );
+};
+
 const ModalCreateTask: React.FC<{
   onClose: () => void;
   task?: Task;
@@ -97,7 +120,8 @@ const ModalCreateTask: React.FC<{
           Title
           <input
             type="text"
-            placeholder="e.g, do the homework"
+            placeholder="e.g, study for the test"
+            required
             value={title}
             onChange={({ target }) => setTitle(target.value)}
             className="w-full"
@@ -109,6 +133,7 @@ const ModalCreateTask: React.FC<{
             type="date"
             className="w-full"
             value={date}
+            required
             onChange={({ target }) => setDate(target.value)}
             min={todayDate}
             max={maxDate}
@@ -117,7 +142,7 @@ const ModalCreateTask: React.FC<{
         <label>
           Description (optional)
           <textarea
-            placeholder="e.g, do the homework"
+            placeholder="e.g, study for the test"
             className="w-full"
             value={description}
             onChange={({ target }) => setDescription(target.value)}
@@ -141,26 +166,16 @@ const ModalCreateTask: React.FC<{
             ))}
           </select>
         </label>
-        <label className="mb-0 flex">
-          <span className="order-1 flex-1">Mark as important</span>
-          <input
-            type="checkbox"
-            className="w-4 h-4 basis-4 mr-2"
-            checked={isImportant}
-            onChange={() => setIsImportant((prev) => !prev)}
-          />
-        </label>
-
-        <label className="mb-0 flex">
-          <span className="order-1 flex-1">Mark as completed</span>
-          <input
-            type="checkbox"
-            className="w-4 h-4 basis-4 mr-2"
-            checked={isCompleted}
-            onChange={() => setIsCompleted((prev) => !prev)}
-          />
-        </label>
-
+        <InputCheckbox
+          isChecked={isImportant}
+          setChecked={setIsImportant}
+          label="Mark as important"
+        />
+        <InputCheckbox
+          isChecked={isCompleted}
+          setChecked={setIsCompleted}
+          label="Mark as completed"
+        />
         <button type="submit" className="btn mt-5">
           {nameForm}
         </button>
