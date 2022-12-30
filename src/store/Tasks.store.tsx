@@ -66,6 +66,7 @@ const defaultTasks = [
     id: "dhsD1",
   },
 ];
+const defaultDirectories = ["Home", "School", "Main"];
 const initialState: {
   tasks: Task[];
   directories: string[];
@@ -73,7 +74,9 @@ const initialState: {
   tasks: localStorage.getItem("tasks")
     ? JSON.parse(localStorage.getItem("tasks")!)
     : defaultTasks,
-  directories: ["Home", "School", "Main"],
+  directories: localStorage.getItem("directories")
+    ? JSON.parse(localStorage.getItem("directories")!)
+    : defaultDirectories,
 };
 
 const tasksSlice = createSlice({
@@ -152,10 +155,20 @@ export default tasksSlice.reducer;
 
 export const tasksMiddleware = (store: any) => (next: any) => (action: any) => {
   const nextAction = next(action);
-  console.log(store);
-  if (action.type.startsWith("tasks/")) {
+  const actionChangeOnlyDirectories =
+    tasksActions.createDirectory.match(action);
+
+  const isADirectoryAction: boolean = action.type
+    .toLowerCase()
+    .includes("directory");
+
+  if (action.type.startsWith("tasks/") && !actionChangeOnlyDirectories) {
     const tasksList = store.getState().tasks.tasks;
     localStorage.setItem("tasks", JSON.stringify(tasksList));
+  }
+  if (action.type.startsWith("tasks/") && isADirectoryAction) {
+    const dirList = store.getState().tasks.directories;
+    localStorage.setItem("directories", JSON.stringify(dirList));
   }
   return nextAction;
 };

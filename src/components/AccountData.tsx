@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar1 from "../assets/avatar-1.jpg";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { menusActions } from "../store/Menu.store";
@@ -14,11 +14,26 @@ const AccountData: React.FC = () => {
   const menuOpen = useAppSelector((state) => state.menu.menuAccountOpened);
   const todayTasksDone = useCompletedTasks({ tasks: todaysTasks, done: true });
   const allTasksDone = useCompletedTasks({ tasks: tasks, done: true });
+  const [isCurrentDarkmode, setIsCurrentDarkmode] = useState<boolean>(() => {
+    const darkModeWasSet = localStorage.getItem("darkmode");
+    if (darkModeWasSet) return true;
+    else return false;
+  });
 
   const toggleDarkMode = () => {
-    const html = document.querySelector<HTMLHtmlElement>("html")!;
-    html.classList.toggle("dark");
+    setIsCurrentDarkmode((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    const html = document.querySelector<HTMLHtmlElement>("html")!;
+    if (isCurrentDarkmode) {
+      html.classList.add("dark");
+      localStorage.setItem("darkmode", "true");
+    } else {
+      html.classList.remove("dark");
+      localStorage.removeItem("darkmode");
+    }
+  }, [isCurrentDarkmode]);
 
   const percentageTodayTasks =
     (todayTasksDone.length * 100) / todaysTasks.length;
