@@ -57,7 +57,7 @@
     @apply bg-violet-600 h-full;
   }
   .itemDirectory > .buttonsDir {
-    @apply opacity-0 transition;
+    @apply xl:opacity-0 transition opacity-100;
   }
   .itemDirectory:hover > .buttonsDir {
     @apply opacity-100;
