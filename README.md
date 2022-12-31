@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 📅 Tasks App (To-Do List)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website de um organizador de tarefas (to-do list) feito com React JS.
 
-## Available Scripts
+![página inicial](https://github.com/aridsm/tasks-app/blob/master/public/To-Do%20List%20_%20All%20tasks.png)
 
-In the project directory, you can run:
+## Descrição
 
-### `npm start`
+- Aplicado de organizar suas tarefas com os seguintes dados: título, descrição, data, marcar como completo e marcar como importante. 
+- As tarefas são organizadas em rotas: tarefas de hoje, tarefas importantes, incompletas, completas, todas as tarefas e tarefas por diretório (pasta). Os diretórios e as tarefas podem ser editados ou excluídos. Além disso, há um diretório principal chamado "Main" que não pode ser editado ou excluído.
+- A lista de tarefas pode ser exibida primeiro em: mais próximas, mais distantes, completas ou incompletas.
+- Você pode pesquisar por alguma tarefas no campo de pesquisa.
+- As tarefas de hoje são mostradas na seção do usuário e nas notificações.
+- Os dados de tarefas, diretórios e darkmode são salvos no localStorage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Objetivo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+O projeto teve principalmente como objetivo pôr em prática conhecimentos de TypeScript, Tailwind, Redux Toolkit e React Js.
 
-### `npm test`
+## Ferramentas utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React JS
+- TypeScript
+- Tailwind CSS
+- Redux Toolkit
+- React Router DOM
+- HTML & CSS
+- Figma (prototipagem)
 
-### `npm run build`
+## Como testar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Você pode acessar o projeto aqui: * em breve *
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Ou rodar na sua máquina: * em breve *
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Observações
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Os dados de tarefas, diretórios e darkmode ficam salvos no localStorage do seu navegador. Você pode clicar no botão "delete all data" para removê-los do localStorage.
+- Para fins demonstrativos, o aplicativo possui uma lista padrão de 3 tarefas e 1 diretório chamado "Main".
