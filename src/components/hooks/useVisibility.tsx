@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-const useVisibility = (elements: any[], fnClose?: () => void) => {
+const useVisibility = (elements: HTMLElement[], fnClose?: () => void) => {
   const [elementIsVisible, setElementIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    const checkClick = (e: any) => {
+    const checkClick = (e: MouseEvent) => {
       if (!elements) return;
 
       const clickedOutsideElement = elements.every((element) => {

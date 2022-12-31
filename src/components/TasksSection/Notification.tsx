@@ -14,7 +14,7 @@ const Notification: React.FC = () => {
   const {
     elementIsVisible: notificationIsVisible,
     showElement: showNotifications,
-  } = useVisibility([refBtnNotification.current]);
+  } = useVisibility([refBtnNotification.current!]);
 
   const todaysTasks = useTodayTasks();
 

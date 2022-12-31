@@ -1,4 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  Action,
+  createSlice,
+  Dispatch,
+  MiddlewareAPI,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { Task } from "../interfaces";
 
 const defaultTasks: Task[] = [
@@ -143,38 +149,39 @@ const tasksSlice = createSlice({
 export const tasksActions = tasksSlice.actions;
 export default tasksSlice.reducer;
 
-export const tasksMiddleware = (store: any) => (next: any) => (action: any) => {
-  const nextAction = next(action);
-  const actionChangeOnlyDirectories =
-    tasksActions.createDirectory.match(action);
+export const tasksMiddleware =
+  (store: MiddlewareAPI) => (next: Dispatch) => (action: Action) => {
+    const nextAction = next(action);
+    const actionChangeOnlyDirectories =
+      tasksActions.createDirectory.match(action);
 
-  const isADirectoryAction: boolean = action.type
-    .toLowerCase()
-    .includes("directory");
+    const isADirectoryAction: boolean = action.type
+      .toLowerCase()
+      .includes("directory");
 
-  if (action.type.startsWith("tasks/") && !actionChangeOnlyDirectories) {
-    const tasksList = store.getState().tasks.tasks;
-    localStorage.setItem("tasks", JSON.stringify(tasksList));
-  }
-  if (action.type.startsWith("tasks/") && isADirectoryAction) {
-    const dirList = store.getState().tasks.directories;
-    localStorage.setItem("directories", JSON.stringify(dirList));
-  }
+    if (action.type.startsWith("tasks/") && !actionChangeOnlyDirectories) {
+      const tasksList = store.getState().tasks.tasks;
+      localStorage.setItem("tasks", JSON.stringify(tasksList));
+    }
+    if (action.type.startsWith("tasks/") && isADirectoryAction) {
+      const dirList = store.getState().tasks.directories;
+      localStorage.setItem("directories", JSON.stringify(dirList));
+    }
 
-  if (tasksActions.deleteAllData.match(action)) {
-    localStorage.removeItem("tasks");
-    localStorage.removeItem("directories");
-    localStorage.removeItem("darkmode");
-  }
+    if (tasksActions.deleteAllData.match(action)) {
+      localStorage.removeItem("tasks");
+      localStorage.removeItem("directories");
+      localStorage.removeItem("darkmode");
+    }
 
-  if (tasksActions.removeTask.match(action)) {
-    console.log(JSON.parse(localStorage.getItem("tasks")!));
-    if (localStorage.getItem("tasks")) {
-      const localStorageTasks = JSON.parse(localStorage.getItem("tasks")!);
-      if (localStorageTasks.length === 0) {
-        localStorage.removeItem("tasks");
+    if (tasksActions.removeTask.match(action)) {
+      console.log(JSON.parse(localStorage.getItem("tasks")!));
+      if (localStorage.getItem("tasks")) {
+        const localStorageTasks = JSON.parse(localStorage.getItem("tasks")!);
+        if (localStorageTasks.length === 0) {
+          localStorage.removeItem("tasks");
+        }
       }
     }
-  }
-  return nextAction;
-};
+    return nextAction;
+  };
