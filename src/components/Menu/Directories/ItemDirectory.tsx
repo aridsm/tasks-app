@@ -56,7 +56,7 @@ const ItemDirectory: React.FC<{ dir: string; classActive: string }> = ({
       )}
       <li
         className={`flex items-center pr-4 pl-9 py-2 itemDirectory ${
-          currentPath === "/" + dir ? classActive : ""
+          currentPath === "/dir/" + dir ? classActive : ""
         }`}
       >
         <NavLink

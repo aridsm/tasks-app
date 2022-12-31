@@ -1,82 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "../interfaces";
 
-const defaultTasks = [
-  {
-    title: "Wash the dishes",
-    dir: "Home",
-    description: "This is the description for this task.",
-    date: "2022-08-14",
-    completed: false,
-    important: false,
-    id: "dY7aN",
-  },
-  {
-    title: "Do homework",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-11-08",
-    completed: true,
-    important: true,
-    id: "hYsk8",
-  },
-  {
-    title: "Wash the dishes",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-10-08",
-    completed: true,
-    important: false,
-    id: "hd5aS",
-  },
-  {
-    title: "Study",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-10-06",
-    completed: true,
-    important: false,
-    id: "fkd8s",
-  },
-  {
-    title: "Study english",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-10-28",
-    completed: true,
-    important: false,
-    id: "f9aKD",
-  },
-  {
-    title: "Fix the TV",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-10-18",
-    completed: false,
-    important: false,
-    id: "dhsda1",
-  },
-  {
-    title: "Study",
-    dir: "School",
-    description: "This is the description for this task.",
-    date: "2022-12-01",
-    completed: false,
-    important: false,
-    id: "dhsD1",
-  },
-];
-const defaultDirectories = ["Home", "School", "Main"];
 const initialState: {
   tasks: Task[];
   directories: string[];
 } = {
   tasks: localStorage.getItem("tasks")
     ? JSON.parse(localStorage.getItem("tasks")!)
-    : defaultTasks,
+    : [],
   directories: localStorage.getItem("directories")
     ? JSON.parse(localStorage.getItem("directories")!)
-    : defaultDirectories,
+    : [],
 };
 
 const tasksSlice = createSlice({

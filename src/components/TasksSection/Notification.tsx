@@ -37,7 +37,7 @@ const Notification: React.FC = () => {
         <IconBell className="fill-violet-600 w-5 h-5 md:w-6 md:h-6 dark:fill-violet-800" />
       </button>
       {notificationIsVisible && (
-        <div className="absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-48 border border-slate-300 dark:border-slate-700">
+        <div className="absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-52 border border-slate-300 dark:border-slate-700">
           {uncompletedTasks.length > 0 ? (
             <div>
               <span className="dark:text-slate-200 font-medium">

@@ -19,7 +19,7 @@ const ModalDirectory: React.FC<{
       (dir: string) => dir !== val
     );
 
-    if (directoryDoesNotExist) {
+    if (directoryDoesNotExist || dirName === val) {
       setErrorDirectoryName(false);
     } else {
       setErrorDirectoryName(true);
@@ -32,6 +32,8 @@ const ModalDirectory: React.FC<{
     onConfirm(newDirName);
     onClose();
   };
+
+  console.log("modal");
 
   return (
     <Modal onClose={onClose} title={title}>
