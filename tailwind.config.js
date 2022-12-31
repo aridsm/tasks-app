@@ -8,6 +8,9 @@ module.exports = {
           800: "#141E33",
         },
       },
+      screens: {
+        "2xl": "1736px",
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
