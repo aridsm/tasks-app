@@ -1,6 +1,6 @@
 # 📅 Tasks App (To-Do List)
 
-Website de um organizador de tarefas (to-do list) feito com React JS.
+Website de um organizador de tarefas (to-do list) feito com React JS, Tailwind CSS, Redux Toolkit e mais.
 
 ![página inicial](https://github.com/aridsm/tasks-app/blob/master/public/To-Do%20List%20_%20All%20tasks.png)
 
@@ -29,9 +29,16 @@ O projeto teve principalmente como objetivo pôr em prática conhecimentos de Ty
 
 ## Como testar
 
-Você pode acessar o projeto aqui: * em breve *
+Você pode acessar o projeto aqui: https://tasks-app-aridsm.netlify.app/
 
-Ou rodar na sua máquina: * em breve *
+Ou rodar na sua máquina: 
+
+``` 
+git clone https://github.com/aridsm/tasks-app.git
+cd tasks-app
+npm install
+npm start
+```
 
 ## Observações
 
