@@ -103,8 +103,9 @@ const tasksSlice = createSlice({
 
       currTask.completed = !currTask.completed;
     },
-    deleteAllTasks(state) {
+    deleteAllData(state) {
       state.tasks = [];
+      state.directories = ["Main"];
     },
     createDirectory(state, action: PayloadAction<string>) {
       const newDirectory: string = action.payload;
@@ -160,8 +161,10 @@ export const tasksMiddleware = (store: any) => (next: any) => (action: any) => {
     localStorage.setItem("directories", JSON.stringify(dirList));
   }
 
-  if (tasksActions.deleteAllTasks.match(action)) {
+  if (tasksActions.deleteAllData.match(action)) {
     localStorage.removeItem("tasks");
+    localStorage.removeItem("directories");
+    localStorage.removeItem("darkmode");
   }
 
   if (tasksActions.removeTask.match(action)) {
