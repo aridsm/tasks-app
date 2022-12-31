@@ -1,6 +1,33 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "../interfaces";
 
+const getSavedDirectories = (): string[] => {
+  let dirList: string[] = [];
+  if (localStorage.getItem("directories")) {
+    dirList = JSON.parse(localStorage.getItem("directories")!);
+    const mainDirExists = dirList.some((dir: string) => dir === "Main");
+    if (!mainDirExists) {
+      dirList.push("Main");
+    }
+  } else {
+    dirList.push("Main");
+  }
+
+  if (localStorage.getItem("tasks")) {
+    const savedTasksList = JSON.parse(localStorage.getItem("tasks")!);
+    let dirNotSaved: string[] = [];
+    savedTasksList.forEach((task: Task) => {
+      if (!dirList.includes(task.dir)) {
+        if (!dirNotSaved.includes(task.dir)) {
+          dirNotSaved.push(task.dir);
+        }
+      }
+    });
+    dirList = [...dirList, ...dirNotSaved];
+  }
+  return dirList;
+};
+
 const initialState: {
   tasks: Task[];
   directories: string[];
@@ -8,9 +35,7 @@ const initialState: {
   tasks: localStorage.getItem("tasks")
     ? JSON.parse(localStorage.getItem("tasks")!)
     : [],
-  directories: localStorage.getItem("directories")
-    ? JSON.parse(localStorage.getItem("directories")!)
-    : [],
+  directories: getSavedDirectories(),
 };
 
 const tasksSlice = createSlice({

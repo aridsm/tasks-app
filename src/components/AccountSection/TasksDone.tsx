@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import useCompletedTasks from "../hooks/useCompletedTasks";
 import useTodayTasks from "../hooks/useTodayTasks";
@@ -22,6 +23,8 @@ const TasksDone: React.FC = () => {
 
   const todaysTasksToShow = todaysTasks.slice(0, 3);
 
+  const showMore = todaysTasks.length > todaysTasksToShow.length;
+
   return (
     <>
       {todaysTasks.length !== 0 && (
@@ -35,14 +38,16 @@ const TasksDone: React.FC = () => {
           </div>
         </div>
       )}
-      <div className="mt-6">
-        <span className="flex justify-between mb-2">
-          <span>All tasks </span> {allTasksDone.length}/{tasks.length}
-        </span>
-        <div className="barProgress">
-          <div style={{ width: percentageAllTasks + "%" }}></div>
+      {tasks.length !== 0 && (
+        <div className="mt-6">
+          <span className="flex justify-between mb-2">
+            <span>All tasks </span> {allTasksDone.length}/{tasks.length}
+          </span>
+          <div className="barProgress">
+            <div style={{ width: percentageAllTasks + "%" }}></div>
+          </div>
         </div>
-      </div>
+      )}
 
       {todaysTasks.length === 0 && (
         <span className="mt-6 block pt-4 border-t-slate-200 dark:border-t-slate-700/[.3] border-t-2">
@@ -60,6 +65,11 @@ const TasksDone: React.FC = () => {
               </li>
             ))}
           </ul>
+          {showMore && (
+            <Link to="/today" className="pl-6">
+              Show more
+            </Link>
+          )}
         </div>
       )}
     </>
