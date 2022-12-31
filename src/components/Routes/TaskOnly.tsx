@@ -15,7 +15,6 @@ const TaskOnly: React.FC = () => {
 
   useEffect(() => {
     const taskId = params.taskId;
-    console.log(taskId);
     const filteredTask = tasks.filter((task: Task) => taskId === task.id);
     if (!filteredTask.length) {
       navigate("/");

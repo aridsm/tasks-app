@@ -1,6 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "../interfaces";
 
+const defaultTasks: Task[] = [
+  {
+    title: "Task 1",
+    important: false,
+    description: "This is the description for this task",
+    date: "2023-04-12",
+    dir: "Main",
+    completed: true,
+    id: "t1",
+  },
+  {
+    title: "Task 2",
+    important: true,
+    description: "This is the description for this task",
+    date: "2023-05-15",
+    dir: "Main",
+    completed: true,
+    id: "t2",
+  },
+  {
+    title: "Task 3",
+    important: false,
+    description: "This is the description for this task",
+    date: "2023-08-21",
+    dir: "Main",
+    completed: false,
+    id: "t3",
+  },
+];
+
 const getSavedDirectories = (): string[] => {
   let dirList: string[] = [];
   if (localStorage.getItem("directories")) {
@@ -34,7 +64,7 @@ const initialState: {
 } = {
   tasks: localStorage.getItem("tasks")
     ? JSON.parse(localStorage.getItem("tasks")!)
-    : [],
+    : defaultTasks,
   directories: getSavedDirectories(),
 };
 
@@ -128,6 +158,20 @@ export const tasksMiddleware = (store: any) => (next: any) => (action: any) => {
   if (action.type.startsWith("tasks/") && isADirectoryAction) {
     const dirList = store.getState().tasks.directories;
     localStorage.setItem("directories", JSON.stringify(dirList));
+  }
+
+  if (tasksActions.deleteAllTasks.match(action)) {
+    localStorage.removeItem("tasks");
+  }
+
+  if (tasksActions.removeTask.match(action)) {
+    console.log(JSON.parse(localStorage.getItem("tasks")!));
+    if (localStorage.getItem("tasks")) {
+      const localStorageTasks = JSON.parse(localStorage.getItem("tasks")!);
+      if (localStorageTasks.length === 0) {
+        localStorage.removeItem("tasks");
+      }
+    }
   }
   return nextAction;
 };

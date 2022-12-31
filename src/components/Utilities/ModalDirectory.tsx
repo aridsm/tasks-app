@@ -33,8 +33,6 @@ const ModalDirectory: React.FC<{
     onClose();
   };
 
-  console.log("modal");
-
   return (
     <Modal onClose={onClose} title={title}>
       <form className="stylesInputsField">
