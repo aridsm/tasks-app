@@ -4,8 +4,8 @@ import { ReactComponent as IconView2 } from "../../assets/view-2.svg";
 
 const sortValues = [
   { value: "order-added", title: "Order added" },
-  { value: "min-date", title: "New" },
-  { value: "max-date", title: "Last" },
+  { value: "min-date", title: "Earlier first" },
+  { value: "max-date", title: "Later first" },
   { value: "completed-first", title: "Completed first" },
   { value: "uncompleted-first", title: "Uncompleted first" },
 ];
