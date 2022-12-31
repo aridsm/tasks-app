@@ -18,7 +18,7 @@ const TasksSection: React.FC = () => {
         <Route path="/today" element={<TodaysTasks />} />
         <Route path="/important" element={<ImportantTasks />} />
         <Route
-          path="/done"
+          path="/completed"
           element={<DoneTasks done={true} title="Completed tasks" />}
         />
         <Route
