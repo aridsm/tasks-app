@@ -24,7 +24,7 @@ O projeto teve principalmente como objetivo pôr em prática conhecimentos de Ty
 - Tailwind CSS
 - Redux Toolkit
 - React Router DOM
-- HTML & CSS
+- HTML
 - Figma (prototipagem)
 
 ## Como testar
